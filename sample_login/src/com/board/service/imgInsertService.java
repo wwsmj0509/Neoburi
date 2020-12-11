@@ -9,24 +9,38 @@ import org.apache.ibatis.session.SqlSession;
 import com.board.dao.imgBoard_dao;
 import com.board.entity.imgBoard_entity;
 import com.login.entity.login_entity;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import controller.CommandAction;
 
 public class imgInsertService implements CommandAction{
 
+
 	@Override
 	public String requestPro_action(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("UTF-8");
+		
 		System.out.println("insert enter");
 		
-		imgBoard_entity dto = new imgBoard_entity();
-		dto.setUserid(request.getParameter("userid"));
-		//dto.setTitle(request.getParameter("title"));
-		dto.setContent(request.getParameter("content"));
+		//실제 저장 경로
+		String realFolder = request.getServletContext().getRealPath("/storage");
+		//System.out.println("저장 폴더:" + realFolder);
 		
-		imgBoard_dao boardDAO = new imgBoard_dao();
-		int n = 0;
-				boardDAO.boardInsert(dto);
+		//파일업로드
+		MultipartRequest multi=new MultipartRequest(
+		        request, realFolder, 5*1024*1024, "UTF-8",new DefaultFileRenamePolicy());
+				
+		imgBoard_entity entity = new imgBoard_entity();
+		
+		entity.setUserid(request.getParameter("userid"));
+		entity.setContent(request.getParameter("content"));
+		entity.setImgPath(multi.getFilesystemName("imgpath"));
+		
+		
+	      
+		imgBoard_dao boardDao = new imgBoard_dao();
+		int n = boardDao.boardInsert(entity);
 		
 		if(n > 0) {
 			request.setAttribute("insertOK", n);

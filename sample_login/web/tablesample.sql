@@ -16,7 +16,7 @@ drop sequence board_seq;
 drop table boardtest purge;
 
 
-select * from boardtest;
+select * from boardlist;
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -39,6 +39,10 @@ imgpath varchar2(80),   -- 이미지 경로
 content varchar2(200),		--글내용
 logtime DATE DEFAULT SYSDATE);
 
+select * from BOARDLIST
+INSERT INTO BOARDLIST
+			VALUES(BOARD_SEQ.NEXTVAL,'abcd','','mingi',SYSDATE)
+
 insert into boardlist(idx,userid,imgpath,content,logtime)
 				values(board_seq.nextval,'admin','1.jpg','testupload',SYSDATE);
 insert into boardlist(idx,userid,imgpath,content,logtime)
@@ -55,7 +59,7 @@ content varchar2(200),
 logtime DATE DEFAULT SYSDATE);
 
 
-drop table boardlist purge;
+drop table boardlist;
 
 
 create sequence board_seq increment by 1 start with 1 nocycle nocache;

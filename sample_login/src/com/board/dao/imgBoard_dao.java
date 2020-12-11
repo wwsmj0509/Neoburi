@@ -40,25 +40,53 @@ public class imgBoard_dao {
 	
 	
 	//write -----------------------------------------------------------------
-	public int boardInsert(imgBoard_entity dto) {
+	
+	public int boardInsert(imgBoard_entity entity) {
 		SqlSession session=factory.openSession();
-		int n = 0;
-		
-		try {
-			n = session.insert("mybatis.BoardMapper.getInsertUser",dto);
-			if(n > 0) {
+		System.out.println("hello"+entity.getUserid());
+		System.out.println(entity.getImgPath());
+		System.out.println(entity.getContent());
+		int n=0;
+		try{
+			n=session.insert("mybatis.BoardMapper.boardInsert", entity);
+			if(n > 0)
 				session.commit();
-			}
 		}catch(Exception e) {
 			e.printStackTrace();
 			session.rollback();
 		}finally {
 			session.close();
 		}
-		System.out.println(" User Write OK");
 		return n;
+	}
+	
+	//modify -----------------------------------------------------------------
+
+	public imgBoard_entity getBoard(int seq) {
+		SqlSession session = factory.openSession();
+		imgBoard_entity entity = session.selectOne("mybatis.BoardMapper.getBoard",seq);
+		session.close();
+		return entity;
+	}
+
+	//delete -----------------------------------------------------------------
+	
+	public void boardDelete(int seq) {
+		SqlSession session = factory.openSession();
+		int n=0;
+		try{
+			n=session.delete("mybatis.BoardMapper.boardDelete",seq);
+			if(n > 0)
+				session.commit();
+			}catch(Exception e) {
+				e.printStackTrace();
+				session.rollback();
+			}finally {
+				session.close();
+			}
 		
 	}
+	
 	//List -----------------------------------------------------------------
 	public List<imgBoard_entity> getUserList() {
 		SqlSession session = factory.openSession();

@@ -18,20 +18,19 @@ public class imgDeleteService implements CommandAction{
 	@Override
 	public String requestPro_action(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("UTF-8");
+		
 		System.out.println("delete enter");
 		
-		int boardIdx = (Integer)request.getAttribute("idx");
+		int seq = Integer.parseInt(request.getParameter("seq"));
+		int pg = Integer.parseInt(request.getParameter("pg"));
+				
+		imgBoard_dao dao = new imgBoard_dao();
+		dao.boardDelete(seq);
+				
+		request.setAttribute("pg", pg);
+				
+		return "board/delete.jsp";
 		
-		imgBoard_dao dao= new imgBoard_dao();
-		int n = 0;
-//		dao.boardDelte(boardIdx);
-		
-		if(n > 0) {
-			request.setAttribute("deleteOK", n);
-			return "boardList.do";
-		}else {
-			return "boardView.do?idx="+boardIdx;
-		}
 	}
 
 }
