@@ -106,7 +106,7 @@ public class ControllerAction extends HttpServlet {
 		
 		String category = request.getServletPath().substring(1);
 		System.out.println("category = " + category);
-		if(category=="write/") {
+		if(category=="write/profileList.do") {
 			category = request.getServletPath().substring(1);
 		}
 		
