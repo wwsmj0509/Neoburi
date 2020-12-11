@@ -53,10 +53,10 @@ public class ControllerAction extends HttpServlet {
 		Iterator it = properties.keySet().iterator();
 		while (it.hasNext()) {
 			String key = (String) it.next();
-			System.out.println("key="+key);
+			//System.out.println("key="+key);
 
 			String className = properties.getProperty(key);
-			System.out.println("className="+className);
+		//	System.out.println("className="+className);
 
 			try {
 				Class classType = Class.forName(className);
@@ -64,14 +64,14 @@ public class ControllerAction extends HttpServlet {
 
 				map.put(key, ob);// 맵에 저장
 				
-				System.out.println("map-------------");
+		//		System.out.println("map-------------");
 
 				Iterator<Integer> keys = map.keySet().iterator();
 				while(keys.hasNext()){
 					Object key_sample = keys.next();
-				    System.out.println("[Key]:" + key_sample + " [Value]:" +  map.get(key_sample));
+				    //System.out.println("[Key]:" + key_sample + " [Value]:" +  map.get(key_sample));
 				}
-				System.out.println("-----------------");
+			//	System.out.println("-----------------");
 				
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();

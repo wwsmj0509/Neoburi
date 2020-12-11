@@ -18,29 +18,27 @@ public class joinService implements CommandAction{
 		System.out.println("회원가입 service");
 		////////////////////////////////////
 		
-		login_entity entity = new login_entity();
-		
-		entity.setUserid(request.getParameter("input_id"));
-		entity.setPwd(request.getParameter("input_pwd"));
-		entity.setName(request.getParameter("input_name"));
-		entity.setEmail(request.getParameter("input_email"));
-		entity.setAddress(request.getParameter("input_address"));
-		entity.setProfileimg(request.getParameter("profileinmg"));
-		entity.setChk(request.getParameter("input_chk"));
-		
+		login_entity Inputentity = new login_entity();
 		login_dao dao = new login_dao();
 		
-		int n = dao.existCheck(entity.getUserid());
 		
-		if(n > 0) {
-			entity = dao.getJoin(entity);
-			System.out.println("n : "+n);
+		Inputentity.setUserid(request.getParameter("input_id"));
+		Inputentity.setPwd(request.getParameter("input_pwd"));
+		Inputentity.setName(request.getParameter("input_name"));
+		Inputentity.setEmail(request.getParameter("input_email"));
+		Inputentity.setAddress(request.getParameter("input_address"));
+		Inputentity.setChk(request.getParameter("input_chk"));
+		
+		
+		login_entity checkentity = dao.existCheck(Inputentity.getUserid());
+		
+		if(checkentity==null) {
+			int n = dao.getJoin(Inputentity);
 			return "login.jsp";
 		}else {
 			HttpSession session=request.getSession();
 			String userExistChk="유저존재";
 			session.setAttribute("userExistChk", userExistChk);
-			System.out.println("가입실패 중복존재");
 			return "/login/signUp.jsp";
 		}
 		

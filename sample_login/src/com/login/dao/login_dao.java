@@ -27,12 +27,9 @@ public class login_dao {
 	public login_entity getUser(String id, String pwd) {
 		SqlSession session = factory.openSession();
 		login_entity logEntity = new login_entity();
-		
+
 		logEntity.setUserid(id);
 		logEntity.setPwd(pwd);
-
-		System.out.println(logEntity.getUserid());
-		System.out.println(logEntity.getPwd());
 
 		login_entity entity = session.selectOne("mybatis.LoginMapper.getLoginUser", logEntity);
 		session.close();
@@ -40,14 +37,13 @@ public class login_dao {
 		return entity;
 	}
 
-	public login_entity getJoin(login_entity entity) {
+	public int getJoin(login_entity entity) {
+
 		
 		SqlSession session = factory.openSession();
-		login_entity logEntity = new login_entity();
-
 		int n = 0;
 		try {
-			n = session.insert("mybatis.LoginMapper.JoinUser", logEntity);
+			n = session.insert("mybatis.LoginMapper.JoinUser", entity);
 			if (n > 0) {
 				session.commit();
 			}
@@ -57,20 +53,17 @@ public class login_dao {
 		} finally {
 			session.close();
 		}
-		System.out.println("join finally OK");
-		return logEntity;
+		return n;
 	}
 
-	
-	public int existCheck(String userid) {
-		
+	public login_entity existCheck(String userid) {
+
 		SqlSession session = factory.openSession();
-		int n = session.selectOne("mybatis.LoginMapper.userExist", userid);
-		
-		if(n > 0)
+		login_entity entity = session.selectOne("mybatis.LoginMapper.userExist", userid);
+
 		session.close();
-		return n;
-		
+		return entity;
+
 	}
-	
+
 }
