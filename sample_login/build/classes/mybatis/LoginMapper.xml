@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.LoginMapper">
+	<select id="getLoginUser" parameterType="LoginDTO" resultType="LoginDTO">
+		<![CDATA[
+			SELECT * 
+			FROM USERLIST WHERE USERID=#{userid} AND PWD=#{pwd}
+		]]>
+	</select>
+	
+	<insert id="JoinUser" parameterType="LoginDTO">
+		<![CDATA[
+			INSERT INTO USERLIST(USERID,PWD,NAME,EMAIL,ADDRESS,PROFILEINMG,CHK) 
+				VALUES(#{userid},#{pwd},#{name},#{email},#{address},#{profileinmg},#{chk})
+			]]>
+	</insert>
+	
+	
+	<select id="userExist" parameterType="String" resultType="LoginDTO">
+	<![CDATA[
+	
+		SELECT * FROM USERLIST WHERE USERID=#{userid}
+	
+	
+	]]>
+	
+	
+	</select>
+</mapper>
