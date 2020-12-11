@@ -30,13 +30,20 @@ public class imgInsertService implements CommandAction{
 		//파일업로드
 		MultipartRequest multi=new MultipartRequest(
 		        request, realFolder, 5*1024*1024, "UTF-8",new DefaultFileRenamePolicy());
-				
+		
+		//세션 오픈 한다음 login entity사용가능하게 만듬
+		HttpSession session = request.getSession();
+		login_entity logentity = (login_entity)session.getAttribute("logOK");
+		
 		imgBoard_entity entity = new imgBoard_entity();
 		
-		entity.setUserid(request.getParameter("userid"));
-		entity.setContent(request.getParameter("content"));
+		
+		entity.setUserid(logentity.getUserid());
+		entity.setContent(multi.getParameter("content"));
 		entity.setImgPath(multi.getFilesystemName("imgpath"));
 		
+		System.out.println(entity.getUserid());
+		System.out.println(entity.getContent());
 		
 	      
 		imgBoard_dao boardDao = new imgBoard_dao();

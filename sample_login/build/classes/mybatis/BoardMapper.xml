@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.BoardMapper">
+
+	<select id="getBoardList" resultType="BoardDTO">
+		<![CDATA[
+			SELECT * FROM BOARDLIST ORDER BY IDX DESC
+		]]>
+	</select>
+	
+	<insert id="boardInsert" parameterType="BoardDTO">
+		<![CDATA[
+			INSERT INTO BOARDLIST
+			VALUES(BOARD_SEQ.NEXTVAL,#{userid},#{imgPath},#{content},SYSDATE)
+		]]>
+	</insert>
+	
+	<delete id="boardDelete" parameterType="java.lang.Integer">
+		<![CDATA[
+			DELETE BOARDLIST WHERE SEQ=#{seq}
+		]]>
+	</delete>
+	
+	<select id="getBoardView" resultType="BoardDTO">
+		<![CDATA[
+			SELECT * FROM BOARDLIST WHERE IDX=#{idx}
+		]]>
+	</select>
+	<select id="getProfileList" resultType="BoardDTO">
+		<![CDATA[
+			SELECT * FROM BOARDLIST WHERE USERID=#{userid}
+		]]>
+	</select>
+	
+	
+	<update id="getUpdateUser" parameterType="BoardDTO">
+		<![CDATA[
+			UPDATE BOARDLIST SET TITLE=#{title}, CONTENT=#{content} WHERE IDX=#{idx}
+		]]>
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+

@@ -43,9 +43,6 @@ public class imgBoard_dao {
 	
 	public int boardInsert(imgBoard_entity entity) {
 		SqlSession session=factory.openSession();
-		System.out.println("hello"+entity.getUserid());
-		System.out.println(entity.getImgPath());
-		System.out.println(entity.getContent());
 		int n=0;
 		try{
 			n=session.insert("mybatis.BoardMapper.boardInsert", entity);

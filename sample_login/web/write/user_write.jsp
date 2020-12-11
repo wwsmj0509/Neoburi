@@ -16,7 +16,7 @@ function checkBoardWrite(){
 </script>
 <c:if test="${!empty logOK}">
 
-	<form name="boardWriteForm" method="post" action="/insta/userWrite.do" enctype="multipart/form-data">
+	<form name="boardWriteForm" method="post" action="/insta/userWrite.do?content=" enctype="multipart/form-data">
 	<h3>글쓰기</h3>
 	<table border="0" >
 	   <tr>
