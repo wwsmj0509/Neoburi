@@ -6,7 +6,8 @@ drop table userstest purge;
 
 select * from userlist;
 
-insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('hi','1234','test','test','성남','/insta/upload/dog.jpg','user');
+insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('hi','1234','test','test','성남','/insta/storage/dog.jpg','user');
+update userlist set profileimg='/insta/storage/dog.jpg';
 
 create sequence board_seq increment by 1  start with 1 nocycle nocache;
 

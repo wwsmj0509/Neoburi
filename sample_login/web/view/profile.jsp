@@ -4,7 +4,7 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../menu.jsp" %>
-
+<!-- 개인정보 수정하기 -->
 	<form name="uploadForm" method="post" action="/insta/upload.do">
 		<div>
 			<img name="profileimg" src="${logOK.profileimg}">
