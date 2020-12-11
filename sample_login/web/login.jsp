@@ -13,6 +13,7 @@
 </head>
 
 <body>
+	<!--kim test branch  -->
 	
 		<%
 			String errMsg = (String)session.getAttribute("errMsg");
