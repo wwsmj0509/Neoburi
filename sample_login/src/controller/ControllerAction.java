@@ -103,8 +103,13 @@ public class ControllerAction extends HttpServlet {
             throws ServletException, IOException {
     	//요청
 		System.out.println("test : " + request.getRequestURI());
+		
 		String category = request.getServletPath().substring(1);
 		System.out.println("category = " + category);
+		if(category=="write/") {
+			category = request.getServletPath().substring(1);
+		}
+		
 
 		CommandAction command = (CommandAction) map.get(category);
 		System.out.println("command = " + command);
