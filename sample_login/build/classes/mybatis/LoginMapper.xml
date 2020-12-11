@@ -12,13 +12,13 @@
 	
 	<insert id="JoinUser" parameterType="LoginDTO">
 		<![CDATA[
-			INSERT INTO USERLIST(USERID,PWD,NAME,EMAIL,ADDRESS,PROFILEINMG,CHK) 
-				VALUES(#{userid},#{pwd},#{name},#{email},#{address},#{profileinmg},#{chk})
+			INSERT INTO USERLIST(USERID,PWD,NAME,EMAIL,ADDRESS,PROFILEIMG,CHK) 
+				VALUES(#{userid},#{pwd},#{name},#{email},#{address},#{profileimg},#{chk})
 			]]>
 	</insert>
 	
 	
-	<select id="userExist" parameterType="String" resultType="LoginDTO">
+	<select id="userExist" parameterType="LoginDTO" resultType="LoginDTO">
 	<![CDATA[
 	
 		SELECT * FROM USERLIST WHERE USERID=#{userid}

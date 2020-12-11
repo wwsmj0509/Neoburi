@@ -55,6 +55,7 @@ content varchar2(200),
 logtime DATE DEFAULT SYSDATE);
 
 
+drop table userlist;
 drop table boardlist purge;
 
 
@@ -64,6 +65,8 @@ create sequence reply_seq increment by 1 start with 1 nocycle nocache;
 delete
 
 select * from tab;
+
+
 select * from userlist ;
 select * from boardlist;
 select * from reply;
