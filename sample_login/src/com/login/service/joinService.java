@@ -29,22 +29,16 @@ public class joinService implements CommandAction{
 		Inputentity.setAddress(request.getParameter("input_address"));
 		Inputentity.setChk(request.getParameter("input_chk"));
 		
-		System.out.println(":: - >"+Inputentity.getUserid());
-		System.out.println(":: - >"+Inputentity.getName());
-		System.out.println(":: - >"+Inputentity.getProfileimg());
-		
 		
 		login_entity checkentity = dao.existCheck(Inputentity.getUserid());
 		
 		if(checkentity==null) {
 			int n = dao.getJoin(Inputentity);
-			System.out.println("회원가입 성공 서비스 탈출 :   "+ n);
 			return "login.jsp";
 		}else {
 			HttpSession session=request.getSession();
 			String userExistChk="유저존재";
 			session.setAttribute("userExistChk", userExistChk);
-			System.out.println("가입실패 중복존재");
 			return "/login/signUp.jsp";
 		}
 		

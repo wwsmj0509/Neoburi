@@ -31,9 +31,6 @@ public class login_dao {
 		logEntity.setUserid(id);
 		logEntity.setPwd(pwd);
 
-		System.out.println(logEntity.getUserid());
-		System.out.println(logEntity.getPwd());
-
 		login_entity entity = session.selectOne("mybatis.LoginMapper.getLoginUser", logEntity);
 		session.close();
 
@@ -42,9 +39,6 @@ public class login_dao {
 
 	public int getJoin(login_entity entity) {
 
-		System.out.println(">>>"+entity.getUserid());
-		System.out.println(">>>"+entity.getPwd());
-		System.out.println(">>>"+entity.getEmail());
 		
 		SqlSession session = factory.openSession();
 		int n = 0;
@@ -59,7 +53,6 @@ public class login_dao {
 		} finally {
 			session.close();
 		}
-		System.out.println("join finally OK");
 		return n;
 	}
 
