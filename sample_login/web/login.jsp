@@ -13,7 +13,7 @@
 </head>
 
 <body>
-	<!--kim test branch  test -->
+	<!--석중 테스트  -->
 	
 		<%
 			String errMsg = (String)session.getAttribute("errMsg");
