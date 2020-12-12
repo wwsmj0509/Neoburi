@@ -15,9 +15,8 @@ insert into boardtest(idx,userid,title,content) values(board_seq.nextval,'admin'
 
 drop sequence board_seq;
 drop table boardtest purge;
+지성!@@!@!@!@!@!@!@!@!@!@!@!@!@!@
 
-
-select * from boardlist;
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
