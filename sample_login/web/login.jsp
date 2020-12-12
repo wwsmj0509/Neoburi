@@ -13,8 +13,10 @@
 </head>
 
 <body>
-	<!--석중 테스트  -->
-	
+
+	<!--지성 테스트  개인 브런치 리모트에 테스트-->
+
+
 		<%
 			String errMsg = (String)session.getAttribute("errMsg");
 			if(errMsg==null){
@@ -63,7 +65,11 @@
 			}			
 			
 		} 
-		
+// 		get
+// 		test : /insta/profileList.do
+// 		category = profileList.do
+// 		command = com.board.service.profileListService@6e0257d0
+// 		view = /view/profile.jsp
 		</script>
 		
 	</body>

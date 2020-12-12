@@ -15,8 +15,9 @@ public class imgListService implements CommandAction {
 
 	@Override
 	public String requestPro_action(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-
 		imgBoard_dao dao = new imgBoard_dao();
+		
+		
 		List<imgBoard_entity> list = dao.getUserList();
 
 		// getUserList라는 메소드를 쓰는데 이 메소드의 맵퍼 id는 getBoardList 임
