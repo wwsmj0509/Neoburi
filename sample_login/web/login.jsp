@@ -13,7 +13,7 @@
 </head>
 
 <body>
-	<!--지성 테스트 -->
+	<!--지성 테스트  개인 브런치-->
 	
 		<%
 			String errMsg = (String)session.getAttribute("errMsg");
