@@ -10,12 +10,18 @@
 		]]>
 	</select>
 	
-<!-- 	<insert id="getInsertUser" parameterType="BoardDTO"> -->
-<!-- 		<![CDATA[ -->
-<!--  			INSERT INTO BOARDLIST(idx,userid,imagepath,content,logtime) -->
-<!--  			VALUES(BOARD_SEQ.NEXTVAL,#{userid},#{imagepath},#{content},#(logtime}) -->
-<!--  		]]> -->
-<!-- 	</insert> -->
+	<insert id="boardInsert" parameterType="BoardDTO">
+		<![CDATA[
+			INSERT INTO BOARDLIST
+			VALUES(BOARD_SEQ.NEXTVAL,#{userid},#{imgPath},#{content},SYSDATE)
+		]]>
+	</insert>
+	
+	<delete id="boardDelete" parameterType="java.lang.Integer">
+		<![CDATA[
+			DELETE BOARDLIST WHERE SEQ=#{seq}
+		]]>
+	</delete>
 	
 	<select id="getBoardView" resultType="BoardDTO">
 		<![CDATA[
