@@ -1,6 +1,5 @@
 package com.board.service;
 
-
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -16,12 +15,19 @@ public class imgListService implements CommandAction {
 
 	@Override
 	public String requestPro_action(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+
 		System.out.print("board.do in");
+
 		imgBoard_dao dao = new imgBoard_dao();
+
 		List<imgBoard_entity> list = dao.getUserList();
-		
-		request.setAttribute("list", list);
-		
+
+
+
+		if (list != null)
+			request.setAttribute("list", list);
+
+
 		return "board.jsp";
 	}
 }

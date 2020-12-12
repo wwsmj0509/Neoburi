@@ -10,6 +10,7 @@
 		]]>
 	</select>
 	
+<<<<<<< HEAD
 	<insert id="boardInsert" parameterType="BoardDTO">
 		<![CDATA[
 			INSERT INTO BOARDLIST
@@ -22,6 +23,14 @@
 			DELETE BOARDLIST WHERE SEQ=#{seq}
 		]]>
 	</delete>
+=======
+<!-- 	<insert id="getInsertUser" parameterType="BoardDTO"> -->
+<!-- 		<![CDATA[ -->
+<!--  			INSERT INTO BOARDLIST(idx,userid,imagepath,content,logtime) -->
+<!--  			VALUES(BOARD_SEQ.NEXTVAL,#{userid},#{imagepath},#{content},#(logtime}) -->
+<!--  		]]> -->
+<!-- 	</insert> -->
+>>>>>>> refs/heads/develop
 	
 	<select id="getBoardView" resultType="BoardDTO">
 		<![CDATA[
