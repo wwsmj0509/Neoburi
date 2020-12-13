@@ -29,12 +29,6 @@
 <body>
 
 	<%
-		String UserExistMsg=(String)request.getAttribute("UserExistMsg");
-		if(UserExistMsg==null){
-			UserExistMsg="";
-		}  
-		
-	
 		ArrayList<login_entity> UserList = (ArrayList<login_entity>)session.getAttribute("UserList");
 	%>
 
