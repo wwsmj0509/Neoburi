@@ -13,18 +13,13 @@
 </head>
 
 <body>
-
-
-
 		<%
 			String errMsg = (String)session.getAttribute("errMsg");
 			if(errMsg==null){
 				errMsg="";
 			}
 			session.removeAttribute("errMsg");
-			
 		%>
-		
 		
 		<form action="/insta/login.do" method="post" onsubmit="return blankCheck();"  >
 			<table >

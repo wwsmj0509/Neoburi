@@ -31,7 +31,7 @@ public class loginService implements CommandAction{
 			session.setAttribute("logOK", entity);  //로그인 세션 생성
 			return "boardList.do";
 		}else {
-			String noUser="없는 사용자입니다.";
+			String noUser="잘못된 사용자 정보입니다. 확인해주세요.";
 			session.setAttribute("errMsg", noUser); 
 			return "login.jsp";
 		}
