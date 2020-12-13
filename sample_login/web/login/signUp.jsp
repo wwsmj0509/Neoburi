@@ -1,3 +1,5 @@
+<%@page import="com.login.entity.login_entity"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -27,24 +29,29 @@
 <body>
 
 	<%
-		String userExistChk = (String) session.getAttribute("userExistChk");
-	if (userExistChk == null)
-		userExistChk = "";
-		session.removeAttribute("userExistChk");
+		String UserExistMsg=(String)request.getAttribute("UserExistMsg");
+		if(UserExistMsg==null){
+			UserExistMsg="";
+		}  
+		
+	
+		ArrayList<login_entity> UserList = (ArrayList<login_entity>)session.getAttribute("UserList");
 	%>
 
 
 
-	<form action="/insta/join.do" method="post" id="form_id" onsubmit='return emptyCheck();'
-		name="form_name">
+	<form action="/insta/join.do" method="post" id="form_id"
+		onsubmit='return emptyCheck();' name="form_name">
 		<table>
 			<tr>
 				<th colspan="2" align="center">회원 가입</th>
 			</tr>
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" placeholder="아이디" name="input_id" id="input_id"
-					autocomplete=off  ></td>
+				<td><input type="text" placeholder="아이디" name="input_id"
+					id="input_id" autocomplete=off></td>
+				<td><span style="color: red; display: none;"
+					id="check_id_span"></span> </td>
 
 			</tr>
 			<tr>
@@ -54,15 +61,16 @@
 			</tr>
 			<tr>
 				<td>비밀번호 확인</td>
-				<td><input type="password" placeholder="비밀번호" autocomplete=off class="input_pwd" id="input_pwd_re"
-					></td> 
-					
-					<td ><span style="color: red;display:none;" id="check_pwd_span"></span></td>
+				<td><input type="password" placeholder="비밀번호" autocomplete=off
+					class="input_pwd" id="input_pwd_re"></td>
+
+				<td><span style="color: red; display: none;"
+					id="check_pwd_span"></span></td>
 			</tr>
 			<tr>
 				<td>이름</td>
 				<td><input type="text" placeholder="이름" name="input_name"
-					autocomplete=off id="input_name" ></td>
+					autocomplete=off id="input_name"></td>
 			</tr>
 			<tr>
 				<td>EMAIL</td>
@@ -90,54 +98,101 @@
 		</table>
 	</form>
 
-	<div style="color: red;"><%=userExistChk%></div>
 
 	<script>
 	
-	function emptyCheck(){
-		
-		var id=$('#input_id').val();
-		var pwd=$('#input_pwd').val();
-		var pwd_re=$('#input_pwd_re').val();
-		var name=$('#input_name').val();
-		var email=$('#input_email').val();
-		var address=$('#input_address').val();
-		
-		if(id==''||pwd==''||pwd_re==''||name==''||email==''||address==''){
-			alert('공백을 입력하지마세요');
-			return false;
+	
+		function emptyCheck(){
+			
+			var id=$('#input_id').val();
+			var pwd=$('#input_pwd').val();
+			var pwd_re=$('#input_pwd_re').val();
+			var name=$('#input_name').val();
+			var email=$('#input_email').val();
+			var address=$('#input_address').val();
+			
+			if(id==''||pwd==''||pwd_re==''||name==''||email==''||address==''){
+				alert('공백을 입력하지마세요');
+				return false;
+			}
+			else{
+				
+				<%for(int i = 0 ;i<UserList.size();i++){%>
+					
+					if('<%=UserList.get(i).getUserid()%>'== id){
+						alert("중복된 아이디입니다.");
+				  		return false;
+					}
+					
+				<%}%>
+					
+					var input_pw=$('#input_pwd').val();
+				  	var input_pw_re=$('#input_pwd_re').val();
+				  	
+				  	  	if(input_pw==input_pw_re){
+				  	  		alert("회원가입 되었습니다.")
+							return true;
+				  	  	}
+					  	else{
+					  		alert("비밀번호 일치여부를 확인해주세요.")
+							return false;
+					  	}
+				
+			}
+			
 		}
-		else{
-			return true;
-		}
 		
-	}
+		
+		
+		$('#input_id').focusout(function (){
+			//실시간체크
+			
+			var input_id=$('#input_id').val();
 
-	  $('.input_pwd').focusout(function () {
-		  
-		  	var input_pw=$('#input_pwd').val();
-		  	var input_pw_re=$('#input_pwd_re').val();
-		  	console.log(input_pw);
-		  	console.log(input_pw_re);
-		  	
-		  	if(input_pw==''||input_pw_re==''){
-		  		null;
-		  	}
-		  	else{
-		  	  	if(input_pw==input_pw_re){
-			  		$('#check_pwd_span').css('color','green');
-			  		$('#check_pwd_span').css('display',"inline");
-			  		$('#check_pwd_span').html("비밀번호가 일치합니다.");
+			
+			<%for(int i = 0 ;i<UserList.size();i++){%>
+				
+				if('<%=UserList.get(i).getUserid()%>'== input_id){
+					$('#check_id_span').css('color','red');
+			  		$('#check_id_span').css('display',"inline");
+			  		$('#check_id_span').html("아이디 중복");
+			  		return false;
+				}
+				else{
+					$('#check_id_span').css('color','green');
+			  		$('#check_id_span').css('display',"inline");
+			  		$('#check_id_span').html("아이디 사용가능");
+				}
+				
+			<%}%>
+		
+			
+			
+		});
+
+		$('.input_pwd').focusout(function () {
+			  
+			  	var input_pw=$('#input_pwd').val();
+			  	var input_pw_re=$('#input_pwd_re').val();
+			  	if(input_pw==''||input_pw_re==''){
+			  		null;
 			  	}
 			  	else{
-			  		$('#check_pwd_span').css('color','red');
-			  		$('#check_pwd_span').css('display',"inline");
-			  		$('#check_pwd_span').html("비밀번호를 다시 확인해주세요.");
+			  	  	if(input_pw==input_pw_re){
+				  		$('#check_pwd_span').css('color','green');
+				  		$('#check_pwd_span').css('display',"inline");
+				  		$('#check_pwd_span').html("비밀번호가 일치합니다.");
+				  	}
+				  	else{
+				  		$('#check_pwd_span').css('color','red');
+				  		$('#check_pwd_span').css('display',"inline");
+				  		$('#check_pwd_span').html("비밀번호를 다시 확인해주세요.");
+				  	}
 			  	}
-		  	}
+		  });
 		
-		  
-	  });
+		
+
 
 	</script>
 

@@ -34,11 +34,13 @@ public class joinService implements CommandAction{
 		
 		if(checkentity==null) {
 			int n = dao.getJoin(Inputentity);
+			System.out.println("n : "+n);
 			return "login.jsp";
 		}else {
+			System.out.println("회원가입실패");
 			HttpSession session=request.getSession();
-			String userExistChk="유저존재";
-			session.setAttribute("userExistChk", userExistChk);
+			String userExistChk="아이디가 중복됩니다.";
+			session.setAttribute("UserExistMsg", userExistChk);
 			return "/login/signUp.jsp";
 		}
 		

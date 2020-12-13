@@ -2,6 +2,7 @@ package com.login.dao;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -9,6 +10,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.login.entity.login_entity;
+
+import jdk.nashorn.internal.runtime.regexp.JoniRegExp.Factory;
 
 public class login_dao {
 
@@ -55,6 +58,20 @@ public class login_dao {
 		}
 		return n;
 	}
+	
+	
+	public List<login_entity> getUserList(){
+		
+		SqlSession session = factory.openSession();
+		
+		List<login_entity> list=session.selectList("mybatis.LoginMapper.getUserList");
+		session.close();
+		
+		return list;
+		
+	}
+	
+	
 
 	public login_entity existCheck(String userid) {
 

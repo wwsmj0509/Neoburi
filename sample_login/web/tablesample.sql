@@ -65,7 +65,6 @@ drop table boardlist purge;
 
 drop table boardlist;
 
-
 create sequence board_seq increment by 1 start with 1 nocycle nocache;
 create sequence reply_seq increment by 1 start with 1 nocycle nocache;
 

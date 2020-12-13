@@ -41,7 +41,7 @@
 					<td colspan="1"><input type="submit" value="로그인"></td>
 				</tr>
 				<tr>
-					<td colspan="1"><a href="/insta/login/signUp.jsp">회원가입</a></td>
+					<td colspan="1"><a href="/insta/enterJoin.do">회원가입</a></td>
 				</tr>
 				
 			</table>

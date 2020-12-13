@@ -10,13 +10,20 @@
 		]]>
 	</select>
 	
-	<insert id="JoinUser" parameterType="LoginDTO">
+	<insert id="JoinUser"  parameterType="LoginDTO">
 		<![CDATA[
 			INSERT INTO USERLIST(USERID,PWD,NAME,EMAIL,ADDRESS,PROFILEIMG,CHK) 
 				VALUES(#{userid},#{pwd},#{name},#{email},#{address},#{profileimg},#{chk})
 			]]>
 	</insert>
 	
+	<select id="getUserList" parameterType="LoginDTO"  resultType="LoginDTO">
+		<![CDATA[
+			SELECT * FROM USERLIST
+		]]>
+
+	
+	</select>
 	
 	<select id="userExist" parameterType="LoginDTO" resultType="LoginDTO">
 	<![CDATA[
