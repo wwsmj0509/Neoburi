@@ -13,19 +13,26 @@
 	<insert id="JoinUser" parameterType="LoginDTO">
 		<![CDATA[
 			INSERT INTO USERLIST(USERID,PWD,NAME,EMAIL,ADDRESS,PROFILEIMG,CHK) 
-				VALUES(#{userid},#{pwd},#{name},#{email},#{address},#{profileimg},#{chk})
+				VALUES(#{userid},#{pwd},#{name},#{email},#{address},'unimg.jpg',#{chk})
 			]]>
 	</insert>
 	
 	
 	<select id="userExist" parameterType="LoginDTO" resultType="LoginDTO">
 	<![CDATA[
-	
 		SELECT * FROM USERLIST WHERE USERID=#{userid}
-	
-	
 	]]>
-	
-	
 	</select>
+	
+	<update id="profileImgInsert" parameterType="LoginDTO">
+		<![CDATA[
+			UPDATE USERLIST SET PROFILEIMG=#{profileimg} WHERE USERID=#{userid}
+		]]>
+	</update>
+	
+		<update id="infoChange" parameterType="LoginDTO" >
+		<![CDATA[
+			UPDATE USERLIST SET PWD=#{pwd}, EMAIL=#{email}, ADDRESS=#{address} WHERE USERID=#{userid}
+		]]>
+	</update>
 </mapper>

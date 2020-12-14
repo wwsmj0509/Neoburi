@@ -130,6 +130,8 @@ public class imgBoard_dao {
 		return polist;
 	}
 
+	
+
 	//Delete -----------------------------------------------------------------
 
 }

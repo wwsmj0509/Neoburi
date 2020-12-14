@@ -16,13 +16,11 @@ public class profileListService implements CommandAction {
 
 	@Override
 	public String requestPro_action(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		
+
 		String userid = request.getParameter("id");
 		
 		imgBoard_dao dao = new imgBoard_dao();
 		List<imgBoard_entity> polist = dao.getProfileList(userid);
-		
-		
 		
 		request.setAttribute("polist", polist);
 		
