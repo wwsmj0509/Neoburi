@@ -26,7 +26,7 @@ public class user_infoService implements CommandAction{
 		Changeentity.setUserid(logentity.getUserid());
 		Changeentity.setPwd(request.getParameter("change_pwd"));
 		Changeentity.setName(logentity.getName());
-		Changeentity.setEmail(request.getParameter("change_pwd"));
+		Changeentity.setEmail(request.getParameter("change_email"));
 		Changeentity.setAddress(request.getParameter("change_address"));
 		Changeentity.setProfileimg(logentity.getProfileimg());
 		Changeentity.setChk(logentity.getChk());

@@ -13,6 +13,7 @@
 <script language="javascript">
 var chk;
 var count;
+
 function goPopup(){
 	var pop = window.open("/insta/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 }
@@ -29,6 +30,11 @@ function pwdchk(){
 	if(${logOK.pwd} == rpwd){
 		alert("현재 비밀번호와 일치합니다");
 		chk = "true";
+		var chkbtn = document.getElementById('button');
+		chkbtn.disabled = true;
+		
+		var pwdrock = document.getElementById('password');
+		pwdrock.disabled = true;
 	}else{
 		alert("현재 비밀번호와 틀립니다");
 		chk = "false";
@@ -67,8 +73,8 @@ function blankCheck(){
 		</tr>
 		<tr>
 			<td>현재 비밀번호</td>
-			<td><input type="password" placeholder="현재 비밀번호" name="input_pwd" autocomplete=off>
-			<input type="button" value="비번 chk" onclick="pwdchk();" autocomplete=off></td>
+			<td><input type="password" id="password" placeholder="현재 비밀번호" name="input_pwd" autocomplete=off>
+			<input type="button" id="button" value="비번 chk" onclick="pwdchk();" autocomplete=off></td>
 		</tr>
 		<tr>
 			<td>변경 비밀번호</td>
@@ -77,12 +83,12 @@ function blankCheck(){
 
 		<tr>
 			<td>EMAIL</td>
-			<td><input type="text" placeholder="바꿀 이메일" name="change_pwd" autocomplete=off></td>
+			<td><input type="text" placeholder="바꿀 이메일" value="${logOK.email}" name="change_email" id="change_email" autocomplete=off></td>
 		</tr>
 		<tr>
 			<td>주소</td>
-			<td><input type="text" placeholder="바꿀 주소"
-				name="change_address" id="input_address_id"><input type="button" value="주소검색" onclick="goPopup();" autocomplete=off></td>
+			<td><input type="text" placeholder="바꿀 주소" value="${logOK.address}"
+				name="change_address" id="change_address"><input type="button" value="주소검색" onclick="goPopup();" autocomplete=off></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center"><input type="submit" value="정보 변경 완료" /></td>
