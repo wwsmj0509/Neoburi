@@ -20,7 +20,7 @@ function goPopup(){
 function jusoCallBack(roadFullAddr){
 		
 	console.log(roadFullAddr);
-		document.form_name.input_address.value=roadFullAddr;  /* input의 name값을통해 찾는다. */
+		document.form_name.change_address.value=roadFullAddr;  /* input의 name값을통해 찾는다. */
 }
 
 function pwdchk(){
