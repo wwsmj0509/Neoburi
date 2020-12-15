@@ -29,6 +29,8 @@ public class loginService implements CommandAction{
 			//세션설정
 			System.out.println("로그인성공");
 			session.setAttribute("logOK", entity);  //로그인 세션 생성
+			System.out.println(entity.getEmail());
+			System.out.println(entity.getAddress());
 			return "boardList.do";
 		}else {
 			String noUser="잘못된 사용자 정보입니다. 확인해주세요.";

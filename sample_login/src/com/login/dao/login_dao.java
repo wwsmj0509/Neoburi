@@ -83,4 +83,40 @@ public class login_dao {
 
 	}
 
+	//프로필 이미지 변경
+		public int profileimgInsert(login_entity entity) {
+			SqlSession session=factory.openSession();
+			int n=0;
+			try{
+				n=session.update("mybatis.LoginMapper.profileImgInsert", entity);
+				if(n > 0)
+					session.commit();
+			}catch(Exception e) {
+				e.printStackTrace();
+				session.rollback();
+			}finally {
+				session.close();
+			}
+			return n;
+		}
+
+		public int infoChange(login_entity changeentity) {
+			
+			SqlSession session=factory.openSession();
+			int n = 0;
+			
+			try {
+				n = session.update("mybatis.LoginMapper.infoChange",changeentity);
+				if(n > 0) {
+					session.commit();
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+				session.rollback();
+			}finally {
+				session.close();
+			}
+			System.out.println(" info Update OK");
+			return n;
+		}
 }

@@ -28,8 +28,9 @@
 			<input type="text" placeholder="검색어를 입력해 주세요" name="search_word">
 			<input type="submit" value="검색">
 		</form>
-		<a class = "a" href="profileList.do?id=${logOK.userid}" >마이페이지</a>
+		<a class = "a" href="/insta/profileList.do?id=${logOK.userid}" >마이페이지</a>
 		<a class = "a" href="/insta/write/user_write.jsp" >글쓰기</a>
+		<a class = "a" href="/insta/login/user_info.jsp" >정보 변경</a>
 		<a class = "a" href="/insta/logout.do" >로그아웃</a>
     
 	</c:if>

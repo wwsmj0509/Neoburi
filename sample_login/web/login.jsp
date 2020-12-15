@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
 		<%
 			String errMsg = (String)session.getAttribute("errMsg");
 			if(errMsg==null){
@@ -59,11 +60,6 @@
 			}			
 			
 		} 
-// 		get
-// 		test : /insta/profileList.do
-// 		category = profileList.do
-// 		command = com.board.service.profileListService@6e0257d0
-// 		view = /view/profile.jsp
 		</script>
 		
 	</body>

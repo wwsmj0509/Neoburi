@@ -29,6 +29,8 @@ public class imgReplyListService implements CommandAction {
 		
 		System.out.println("reply list load OK");
 		
+		System.out.println("여기서 이상해진다 개빡치게");
+		
 		return "view/post.jsp";
 	}
 

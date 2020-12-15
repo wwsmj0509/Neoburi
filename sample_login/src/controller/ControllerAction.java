@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ControllerAction_sample
  */
-@WebServlet(name = "ControllerAction", urlPatterns = { "*.do" })
+@WebServlet(name = "ControllerAction", urlPatterns = { "*.do"})
 public class ControllerAction extends HttpServlet {
 	
 	
@@ -106,11 +106,7 @@ public class ControllerAction extends HttpServlet {
 		
 		String category = request.getServletPath().substring(1);
 		System.out.println("category = " + category);
-		if(category=="write/profileList.do") {
-			category = request.getServletPath().substring(1);
-		}
-		
-
+			
 		CommandAction command = (CommandAction) map.get(category);
 		System.out.println("command = " + command);
 		

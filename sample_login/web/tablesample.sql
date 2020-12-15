@@ -5,17 +5,20 @@ select * from tab;
 drop table userstest purge;
 
 select * from userlist;
-
-insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('hi','1234','test','test','성남','/insta/storage/dog.jpg','user');
-update userlist set profileimg='/insta/storage/dog.jpg';
-
+select * from boardlist;
+UPDATE USERLIST SET PWD='11', EMAIL='11', ADDRESS='11' WHERE USERID='hi';
+UPDATE USERLIST SET PWD='22', EMAIL='22', ADDRESS='22' WHERE USERID='hi';
+insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('hi','1234','test','test','성남','','user');
+update userlist set profileimg='unimg.jpg' where userid='1234';
+update boardlist set imgpath='party.jpg' where  userid='1234';
 create sequence board_seq increment by 1  start with 1 nocycle nocache;
 
 insert into boardtest(idx,userid,title,content) values(board_seq.nextval,'admin','test1','test11');
 
 drop sequence board_seq;
+drop sequence reply_seq;
 drop table boardtest purge;
-지성!@@!@!@!@!@!@!@!@!@!@!@!@!@!@
+
 
 
 
@@ -27,7 +30,7 @@ pwd varchar2(12) not null,
 name varchar2(20) not null,
 email varchar2(100) not null,
 address varchar2(160),
-profileimg varchar2(100),
+profileimg varchar2(200),
 chk varchar2(12));
 
 insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('admin','1111','어드민',' ',' ',' ','master');
@@ -61,8 +64,7 @@ logtime DATE DEFAULT SYSDATE);
 
 
 drop table userlist;
-drop table boardlist purge;
-
+drop table boardlist ;
 drop table boardlist;
 
 create sequence board_seq increment by 1 start with 1 nocycle nocache;
