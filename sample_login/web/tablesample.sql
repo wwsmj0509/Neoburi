@@ -1,27 +1,4 @@
 
-select * from tab;
-
-
-drop table userstest purge;
-
-select * from userlist;
-select * from boardlist;
-UPDATE USERLIST SET PWD='11', EMAIL='11', ADDRESS='11' WHERE USERID='hi';
-UPDATE USERLIST SET PWD='22', EMAIL='22', ADDRESS='22' WHERE USERID='hi';
-insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('hi','1234','test','test','성남','','user');
-update userlist set profileimg='unimg.jpg' where userid='1234';
-update boardlist set imgpath='party.jpg' where  userid='1234';
-create sequence board_seq increment by 1  start with 1 nocycle nocache;
-
-insert into boardtest(idx,userid,title,content) values(board_seq.nextval,'admin','test1','test11');
-
-drop sequence board_seq;
-drop sequence reply_seq;
-drop table boardtest purge;
-
-
-
-
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
 create table userlist(
@@ -35,6 +12,8 @@ chk varchar2(12));
 
 insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('admin','1111','어드민',' ',' ',' ','master');
 
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
 create table boardlist(
 idx number(6) primary key,		--글번호
 userid varchar2(15) not null,	--유져이름
@@ -42,16 +21,20 @@ imgpath varchar2(80),   -- 이미지 경로
 content varchar2(200),		--글내용
 logtime DATE DEFAULT SYSDATE);
 
-select * from BOARDLIST
-INSERT INTO BOARDLIST
-			VALUES(BOARD_SEQ.NEXTVAL,'abcd','','mingi',SYSDATE)
+
+create sequence board_seq increment by 1 start with 1 nocycle nocache;
+
+
 
 insert into boardlist(idx,userid,imgpath,content,logtime)
-				values(board_seq.nextval,'hi','1.jpg','testupload',SYSDATE);
+				values(board_seq.nextval,'admin','1.jpg','testupload',SYSDATE);
 insert into boardlist(idx,userid,imgpath,content,logtime)
-values(board_seq.nextval,'hi','2.jpg','testupload2',SYSDATE);
+values(board_seq.nextval,'admin','2.jfif','testupload2',SYSDATE);
 insert into boardlist(idx,userid,imgpath,content,logtime)
-values(board_seq.nextval,'hi','3.jpg','testupload3',SYSDATE);
+values(board_seq.nextval,'admin','3.jfif','testupload3',SYSDATE);
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 create table reply(
@@ -61,25 +44,27 @@ writeid varchar2(15) not null,
 content varchar2(200),
 logtime DATE DEFAULT SYSDATE);
 
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+create sequence reply_seq increment by 1 start with 1 nocycle nocache;
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 drop table userlist;
 drop table boardlist ;
-drop table boardlist;
+drop table reply;
 
-create sequence board_seq increment by 1 start with 1 nocycle nocache;
-create sequence reply_seq increment by 1 start with 1 nocycle nocache;
+drop sequence reply_seq;
+drop sequence board_seq;
 
-delete
-
-select * from tab;
 
 
 select * from userlist ;
 select * from boardlist;
 select * from reply;
 
-drop table userlist;
 
 
 SELECT * FROM REPLY WHERE boardidx=3 ORDER BY IDX DESC;
