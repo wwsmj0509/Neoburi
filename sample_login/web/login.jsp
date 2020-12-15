@@ -14,6 +14,8 @@
 
 <body>
 
+<!-- 12월 15일 16:32 -->
+
 		<%
 			String errMsg = (String)session.getAttribute("errMsg");
 			if(errMsg==null){

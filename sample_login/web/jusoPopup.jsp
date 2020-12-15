@@ -8,7 +8,6 @@
 	request.setCharacterEncoding("UTF-8"); 
 	String inputYn = request.getParameter("inputYn"); 
 	String roadFullAddr = request.getParameter("roadFullAddr"); 
-	
 
 %>
 </head>

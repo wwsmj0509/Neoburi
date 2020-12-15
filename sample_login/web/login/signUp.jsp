@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="UTF-8">
@@ -20,7 +20,6 @@
 
 	function jusoCallBack(roadFullAddr) {
 
-		console.log(roadFullAddr);
 		document.form_name.input_address.value = roadFullAddr; /* input의 name값을통해 찾는다. */
 	}
 </script>
@@ -74,8 +73,9 @@
 			<tr>
 				<td>주소</td>
 				<td><input type="text" placeholder="주소" name="input_address"
-					id="input_address_id"><input type="button" value="주소검색"
-					onclick="goPopup();" autocomplete=off id="input_address"></td>
+					id="input_address_id">
+					<input type="button" value="주소검색"
+					onclick="goPopup();" autocomplete=off></td>
 			</tr>
 			<tr>
 				<td>유저계정</td>
