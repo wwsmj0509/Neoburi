@@ -1,16 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../menu.jsp"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="../style.css" rel="stylesheet" type="text/css">
-<link href="style.css" rel="stylesheet" type="text/css">
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-<script language="javascript">
+<script>
 var chk;
 var count;
 
@@ -57,9 +49,6 @@ function blankCheck(){
 
 }
 
-
-
- 
 </script>
 
 <form action="/insta/user_info.do" method="post" id="form_id"
