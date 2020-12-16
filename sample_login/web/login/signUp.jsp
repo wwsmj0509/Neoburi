@@ -25,71 +25,51 @@
 </script>
 </head>
 
-<body>
+<body class="join_body">
 
 	<%
 		ArrayList<login_entity> UserList = (ArrayList<login_entity>)session.getAttribute("UserList");
 	%>
+	<form action="/insta/join.do" method="post" id="form_id" class="join_form"
+		onsubmit='return emptyCheck();' name="form_name"  autocomplete='off'>
+		
+		
+			<div class="join_form_title">sign up</div>
+			<div class="input_frame">	
+				<input type="text" placeholder="ID" name="input_id"
+					id="input_id" autocomplete='off' class="join_input join_input_id">
+				<span 
+					id="check_id_span"></span> 
+			
+				<input type="password" placeholder="PASSWORD" name="input_pwd"
+					autocomplete='off' class="input_pwd join_input" id="input_pwd">
+					
+				<input type="password" placeholder="PASSWORD CHECK" autocomplete='off'
+					class="input_pwd join_input" id="input_pwd_re" >
 
-
-
-	<form action="/insta/join.do" method="post" id="form_id"
-		onsubmit='return emptyCheck();' name="form_name">
-		<table>
-			<tr>
-				<th colspan="2" align="center">회원 가입</th>
-			</tr>
-			<tr>
-				<td>아이디</td>
-				<td><input type="text" placeholder="아이디" name="input_id"
-					id="input_id" autocomplete=off></td>
-				<td><span style="color: red; display: none;"
-					id="check_id_span"></span> </td>
-
-			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td><input type="password" placeholder="비밀번호" name="input_pwd"
-					autocomplete=off class="input_pwd" id="input_pwd"></td>
-			</tr>
-			<tr>
-				<td>비밀번호 확인</td>
-				<td><input type="password" placeholder="비밀번호" autocomplete=off
-					class="input_pwd" id="input_pwd_re"></td>
-
-				<td><span style="color: red; display: none;"
-					id="check_pwd_span"></span></td>
-			</tr>
-			<tr>
-				<td>이름</td>
-				<td><input type="text" placeholder="이름" name="input_name"
-					autocomplete=off id="input_name"></td>
-			</tr>
-			<tr>
-				<td>EMAIL</td>
-				<td><input type="text" placeholder="이메일" name="input_email"
-					autocomplete=off id="input_email"></td>
-			</tr>
-			<tr>
-				<td>주소</td>
-				<td><input type="text" placeholder="주소" name="input_address"
-					id="input_address_id">
-					<input type="button" value="주소검색"
-					onclick="goPopup();" autocomplete=off></td>
-			</tr>
-			<tr>
-				<td>유저계정</td>
-				<td><input type="radio" name="input_chk" value="user" checked></td>
-			</tr>
-			<tr>
-				<td>판매자 계정</td>
-				<td><input type="radio" name="input_chk" value="seller"></td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center"><input type="submit" value="가입" /></td>
-				<td><input type="button" value="뒤로가기" onclick="history.back() "></td>
-			</tr>
-		</table>
+				<span 
+					id="check_pwd_span"></span>
+					
+				<input type="text" placeholder="NAME" name="input_name"
+					autocomplete='off' id="input_name" class="join_input">
+				<input type="text" placeholder="EMAIL" name="input_email"
+					autocomplete='off' id="input_email" class="join_input">
+				<input type="text" placeholder="ADDRESS" name="input_address"
+					id="input_address_id" class="join_input"
+					autocomplete='off'>
+				<input type="button" value="주소검색" id="input_address_btn_id"
+					onclick="goPopup();"class="join_address_btn">
+					
+			<div class="check_div">
+				<span id="span_user">유저계정</span>
+				<input type="radio" name="input_chk" value="user" checked class="check_button">
+				<span id="span_seller">판매자 계정</span>
+				<input type="radio" name="input_chk" value="seller" class="check_button">
+			</div>
+			
+				<input type="submit" value="가입" class="join_submit_btn"/>
+				<input type="button" value="뒤로가기" onclick="history.back()" class="join_submit_btn">
+				</div>
 	</form>
 
 
@@ -145,16 +125,23 @@
 
 			
 			<%for(int i = 0 ;i<UserList.size();i++){%>
+			
+				if(input_id==''){
+					$('#check_id_span').css('color','blue');
+					$('#check_id_span').css('opacity','1');
+			  		$('#check_id_span').html("아이디를 입력해주세요");
+					
+				}
 				
-				if('<%=UserList.get(i).getUserid()%>'== input_id){
+				else if('<%=UserList.get(i).getUserid()%>'== input_id){
 					$('#check_id_span').css('color','red');
-			  		$('#check_id_span').css('display',"inline");
+					$('#check_id_span').css('opacity','1');
 			  		$('#check_id_span').html("아이디 중복");
 			  		return false;
 				}
 				else{
 					$('#check_id_span').css('color','green');
-			  		$('#check_id_span').css('display',"inline");
+					$('#check_id_span').css('opacity','1');
 			  		$('#check_id_span').html("아이디 사용가능");
 				}
 				
@@ -174,12 +161,12 @@
 			  	else{
 			  	  	if(input_pw==input_pw_re){
 				  		$('#check_pwd_span').css('color','green');
-				  		$('#check_pwd_span').css('display',"inline");
+						$('#check_pwd_span').css('opacity','1');
 				  		$('#check_pwd_span').html("비밀번호가 일치합니다.");
 				  	}
 				  	else{
 				  		$('#check_pwd_span').css('color','red');
-				  		$('#check_pwd_span').css('display',"inline");
+						$('#check_pwd_span').css('opacity','1');
 				  		$('#check_pwd_span').html("비밀번호를 다시 확인해주세요.");
 				  	}
 			  	}

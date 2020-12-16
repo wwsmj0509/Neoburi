@@ -6,10 +6,6 @@ p{
 	font-size: 30px;
 	}
 
-body {
-	margin: 0; 
-	padding: 0; 
-	}
 
 #menu { 
 	height: 70px; 
@@ -30,3 +26,351 @@ a{text-decoration: none;}
 
 
 #login_info { font-size: 12px; }
+
+
+/* ----------------------------------------- */
+
+/* login.jsp */
+
+html,body{
+	
+	width:100%;
+	height:100%;
+	margin: 0; 
+	padding: 0; 
+}
+
+.login_body{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	background-color: #F8F8F8;
+	
+}
+
+.login_form{
+	width:700px;
+	height:500px;
+	 background-color: #ffffff;
+	 box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px;
+	 	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+	
+}
+
+.login_form_title{
+	font-size: 37px;
+    font-weight: 700;
+    text-align: center;
+    text-indent: 6px;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    color: #263238;
+    margin-top:60px;
+    margin-bottom:60px;
+}
+
+.login_err_msg{
+	width:400px;
+	height:20px;
+	font-size:15px;
+	text-align: center;
+	margin-bottom:15px;
+	color:red;
+	opacity:0;
+	animation:fadein_out  4s cubic-bezier(0.37, 0.82, 0.2, 1);
+}
+
+@keyframes fadein_out{
+	0%{
+		opacity:0;
+	}
+	
+	50%{
+		opacity:1;
+	}
+	
+	100%{
+		opacity:0;
+	}
+	
+}
+
+
+.login_input{
+	font-size: 14px;
+    display: block;
+    width: 260px;
+    height: 25px;
+    padding: 4px 3px;
+    color: #999999;
+    border: 1px solid #d9d9d9;
+    background: transparent;
+    border-radius: 2px;
+    animation: slideIn 0.7s cubic-bezier(0.37, 0.82, 0.2, 1);
+	transition: all 0.7s ease 0s;
+	margin-bottom:15px;
+	border-radius: 10px;
+}
+
+
+
+.login_submit_btn{
+	margin-top:20px;
+	font-size: 12px;
+    line-height: 27px;
+    display: block;
+    width: 200px;
+    height: 27px;
+    cursor: pointer;
+    vertical-align: middle;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #263238;
+    border: 1px solid #263238;
+    background: transparent;
+    border-radius: 2px;
+	transition: all 0.7s;
+}
+
+.login_submit_btn:hover{
+	background-color: #263238;
+    color: #ffffff;
+    
+}
+
+@keyframes slideIn {
+  0% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    margin-left: -320px;
+  }
+  100% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+    opacity: 1;
+    margin-left: 0px;
+  }
+}
+
+
+.login_signIn_btn{
+	margin-top:10px;
+	font-size: 12px;
+    line-height: 27px;
+    display: block;
+    width: 200px;
+    height: 27px;
+    cursor: pointer;
+    vertical-align: middle;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #263238;
+    border: 1px solid #263238;
+    background: transparent;
+    border-radius: 2px;
+}
+
+.login_signIn_btn:hover{
+	background-color: #263238;
+    color: #ffffff;
+    transition: all 0.7s;
+	
+}
+
+.login_input:focus{
+	background-color: #D5D5D5;
+}
+
+
+/* ----------------------------------------------------- */
+/* join.jsp */
+
+.join_body{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	
+	background-color: #F8F8F8;
+	
+}
+.join_form{
+	
+	width:700px;
+	height:650px;
+	 background-color: #ffffff;
+	 box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+}
+
+.join_form_title{
+	font-size: 37px;
+    font-weight: 700;
+    text-align: center;
+    text-indent: 6px;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    color: #263238;
+    margin-top:60px;
+    margin-bottom:60px;
+	
+}
+
+.input_frame{
+	width:700px;
+	padding-left:180px;
+}
+
+
+
+.join_input{
+		font-size: 14px;
+    display: block;
+    width: 260px;
+    height: 25px;
+    padding: 4px 3px;
+    color: #999999;
+    border: 1px solid #d9d9d9;
+    background: transparent;
+    border-radius: 2px;
+	transition: all 0.7s ease 0s;
+	margin-bottom:15px;
+	border-radius: 10px;
+	padding-left:15px;
+}
+
+#input_id{
+	    animation: slideIn 0.7s cubic-bezier(0.37, 0.82, 0.2, 1);
+}
+#input_pwd{
+	    animation: slideIn 1s cubic-bezier(0.37, 0.82, 0.2, 1);
+}
+
+#input_pwd_re{
+	    animation: slideIn 1.3s cubic-bezier(0.37, 0.82, 0.2, 1);
+}
+#input_name{
+		    animation: slideIn 1.6s cubic-bezier(0.37, 0.82, 0.2, 1);
+}
+#input_email{
+		    animation: slideIn 1.9s cubic-bezier(0.37, 0.82, 0.2, 1);
+}
+#input_address_id{
+			 animation: slideIn 2.2s cubic-bezier(0.37, 0.82, 0.2, 1);
+	
+}
+
+
+.join_input:focus{
+	background-color: #D5D5D5;
+}
+
+.join_input_id{
+	display: inline;
+}
+
+#check_id_span{
+	margin-left:30px;
+	transition:all 0.7s ease 0s;
+	color: red; 
+	opacity:0;
+	font-weight:bold;
+}
+
+#input_pwd_re{
+	display:inline;
+}
+
+#check_pwd_span{
+	margin-left:30px;
+	transition:all 0.7s ease 0s;
+	color: red; 
+	opacity:0;
+	font-weight:bold;
+}
+.join_input_address{
+	font-size: 14px;
+    display: block;
+    width: 350px;
+    height: 25px;
+    padding: 4px 3px;
+    color: #999999;
+    border: 1px solid #d9d9d9;
+    background: transparent;
+    border-radius: 2px;
+    animation: slideIn 0.7s cubic-bezier(0.37, 0.82, 0.2, 1);
+	transition: all 0.7s ease 0s;
+	margin-bottom:15px;
+	border-radius: 10px;
+	
+}
+
+#input_address_id{
+	display:inline;
+}
+
+.join_address_btn{
+	margin-left:10px;
+	font-size: 12px;
+    line-height: 10px;
+    width: 100px;
+    height: 27px;
+    cursor: pointer;
+    vertical-align: middle;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #263238;
+    border: 1px solid #263238;
+    background: transparent;
+    border-radius: 2px;
+    transition: all 0.7s;
+}
+
+
+.join_address_btn:hover{
+	background-color: #263238;
+    color: #ffffff;
+    
+}
+
+.check_div{
+	display: flex;
+	justify-content:space-between;
+	align-items:center;
+	width:400px;
+	height: 70px;
+}
+
+.check_button{
+	width:20px;
+	height:20px;
+}
+
+.join_submit_btn{
+		margin-left:10px;
+	font-size: 12px;
+    line-height: 10px;
+    width: 100px;
+    height: 27px;
+    cursor: pointer;
+    vertical-align: middle;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #263238;
+    border: 1px solid #263238;
+    background: transparent;
+    border-radius: 2px;
+    transition: all 0.7s;
+}
+
+
+.join_submit_btn:hover{
+	background-color: #263238;
+    color: #ffffff;
+    
+}
+

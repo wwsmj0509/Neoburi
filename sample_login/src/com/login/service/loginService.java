@@ -33,7 +33,7 @@ public class loginService implements CommandAction{
 			System.out.println(entity.getAddress());
 			return "boardList.do";
 		}else {
-			String noUser="잘못된 사용자 정보입니다. 확인해주세요.";
+			String noUser="아이디 비밀번호를 다시 확인해주세요.";
 			session.setAttribute("errMsg", noUser); 
 			return "login.jsp";
 		}

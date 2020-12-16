@@ -6,20 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../style.css" rel="stylesheet" type="text/css">
-<link href="style.css" rel="stylesheet" type="text/css">
+<link href="/insta/style.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 </head>
 
-<body>
+<body class="login_body">
 
-
-
-
-<!-- 12월 15일 17:00 김경민 -->
-
-
+<!-- 12월 16일 17:35 김경민 -->
 		<%
 			String errMsg = (String)session.getAttribute("errMsg");
 			if(errMsg==null){
@@ -28,26 +22,16 @@
 			session.removeAttribute("errMsg");
 		%>
 		
-		<form action="/insta/login.do" method="post" onsubmit="return blankCheck();"  >
-			<table >
-				<tr>
-					<td>아이디</td>
-					<td><input type="text" placeholder="아이디" name="input_id" id="input_id_id"  autocomplete=off></td>
-				</tr>
-				<tr>
-					<td>비밀번호</td>
-					<td><input type="password" placeholder="비번" name="input_pwd"  id="input_id_pwd" autocomplete=off></td>
-				</tr>
-				<tr>
-					<td colspan="1"><input type="submit" value="로그인"></td>
-				</tr>
-				<tr>
-					<td colspan="1"><a href="/insta/enterJoin.do">회원가입</a></td>
-				</tr>
-				
-			</table>
+		<form action="/insta/login.do" method="post" onsubmit="return blankCheck();"  class="login_form" autocomplete='off' >
+					<div class="login_form_title">ezensta</div>
+					<div class="login_err_msg"><%=errMsg %></div>
+					<input type="text" placeholder="ID" name="input_id" id="input_id_id"  autocomplete='off' class="login_input">
+					<input type="password" placeholder="PASSWORD" name="input_pwd"  id="input_id_pwd" autocomplete=off class="login_input">
+					<input type="submit" value="login" class="login_submit_btn">
+					<input type="button" class="login_signIn_btn" onclick="location.href='/insta/enterJoin.do'" value="회원가입">
+					
 		</form>
-		<div style="color:red;"><%=errMsg %></div>
+		
 		
 		<script>
 		/*공백 허가X 처리  */
