@@ -51,22 +51,13 @@ create sequence reply_seq increment by 1 start with 1 nocycle nocache;
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-drop table userlist;
-drop table boardlist ;
-drop table reply;
-
-drop sequence reply_seq;
-drop sequence board_seq;
-
-
-
 select * from userlist ;
 select * from boardlist;
 select * from reply;
 
 SELECT * FROM BOARDLIST where userid='ab';
-UPDATE boardlist SET IMGPATH= 'bonobono.jpg' WHERE idx=1;
+UPDATE boardlist SET IMGPATH= '2.jpg' WHERE idx=4;
+UPDATE boardlist SET IMGPATH= '3.jpg' WHERE idx=5;
 
 SELECT USERID FROM USERLIST ORDER BY USERID;
 SELECT * FROM REPLY WHERE boardidx=3 ORDER BY IDX DESC;
