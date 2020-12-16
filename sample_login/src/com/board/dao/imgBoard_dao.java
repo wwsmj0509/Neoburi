@@ -130,6 +130,16 @@ public class imgBoard_dao {
 		return polist;
 	}
 
+
+	public List<imgBoard_entity> getClickidList(String userid) {
+		SqlSession session = factory.openSession();
+		List<imgBoard_entity> list = session.selectList("mybatis.BoardMapper.getidList",userid);
+		return list;
+	}
+
+
+
+
 	
 
 	//Delete -----------------------------------------------------------------

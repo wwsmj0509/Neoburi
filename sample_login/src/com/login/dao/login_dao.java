@@ -9,6 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import com.board.entity.imgBoard_entity;
+import com.login.entity.id_entity;
 import com.login.entity.login_entity;
 
 import jdk.nashorn.internal.runtime.regexp.JoniRegExp.Factory;
@@ -119,4 +121,19 @@ public class login_dao {
 			System.out.println(" info Update OK");
 			return n;
 		}
+
+		public List<id_entity> getidList() {
+			SqlSession session = factory.openSession();
+			List<id_entity> list = session.selectList("mybatis.LoginMapper.getidList");
+			session.close();
+			return list;
+		}
+
+		public String getClickidProfileImg(String userid) {
+			SqlSession session = factory.openSession();
+			String img = session.selectOne("mybatis.LoginMapper.getclickidProfileImg",userid);
+			return img;
+		}
+
+	
 }

@@ -7,6 +7,7 @@
 	<typeAliases>
 
 	<typeAlias type="com.login.entity.login_entity" alias="LoginDTO" />
+	<typeAlias type="com.login.entity.id_entity" alias="idDTO" />
 	<typeAlias type="com.board.entity.imgBoard_entity" alias="BoardDTO" />
 	<typeAlias type="com.reply.entity.imgReply_entity" alias="ReplyDTO" />
 		

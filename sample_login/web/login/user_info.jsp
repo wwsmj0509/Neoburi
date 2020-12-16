@@ -45,10 +45,11 @@ function blankCheck(){
 	      alert("현재 비밀번호와 틀립니다")
 	      return false;
 	   }
-	      
-
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/heads/feature/jiseong
 </script>
 
 <form action="/insta/user_info.do" method="post" id="form_id"
