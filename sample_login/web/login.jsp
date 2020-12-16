@@ -17,7 +17,6 @@
 		<%
 			String errMsg = (String)session.getAttribute("errMsg");
 			if(errMsg==null){
-				errMsg="";
 			}
 			session.removeAttribute("errMsg");
 		%>
