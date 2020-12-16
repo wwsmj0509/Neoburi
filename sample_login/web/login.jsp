@@ -6,8 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../style.css" rel="stylesheet" type="text/css">
-<link href="style.css" rel="stylesheet" type="text/css">
+<link href="/insta/style.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 </head>
@@ -23,10 +22,10 @@
 			session.removeAttribute("errMsg");
 		%>
 		
-		<form action="/insta/login.do" method="post" onsubmit="return blankCheck();"  class="login_form">
+		<form action="/insta/login.do" method="post" onsubmit="return blankCheck();"  class="login_form" autocomplete='off' >
 					<div class="login_form_title">ezensta</div>
 					<div class="login_err_msg"><%=errMsg %></div>
-					<input type="text" placeholder="ID" name="input_id" id="input_id_id"  autocomplete=off class="login_input">
+					<input type="text" placeholder="ID" name="input_id" id="input_id_id"  autocomplete='off' class="login_input">
 					<input type="password" placeholder="PASSWORD" name="input_pwd"  id="input_id_pwd" autocomplete=off class="login_input">
 					<input type="submit" value="login" class="login_submit_btn">
 					<input type="button" class="login_signIn_btn" onclick="location.href='/insta/enterJoin.do'" value="회원가입">
