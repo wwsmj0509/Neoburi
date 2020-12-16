@@ -128,4 +128,12 @@ public class login_dao {
 			session.close();
 			return list;
 		}
+
+		public String getClickidProfileImg(String userid) {
+			SqlSession session = factory.openSession();
+			String img = session.selectOne("mybatis.LoginMapper.getclickidProfileImg",userid);
+			return img;
+		}
+
+	
 }

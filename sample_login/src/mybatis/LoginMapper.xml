@@ -48,4 +48,10 @@
 			SELECT USERID FROM USERLIST ORDER BY USERID
 		]]>
 	</select>
+	
+	<select id="getclickidProfileImg" parameterType="java.lang.String" resultType="java.lang.String">
+		<![CDATA[
+			SELECT PROFILEIMG FROM USERLIST WHERE USERID=#{userid}
+		]]>
+	</select>
 </mapper>

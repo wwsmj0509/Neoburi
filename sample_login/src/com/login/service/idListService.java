@@ -22,13 +22,8 @@ public class idListService implements CommandAction {
 		System.out.println("idlist서비스 들어옴");
 		
 		login_dao dao = new login_dao();
-		
-		
+
 		List<id_entity> list = dao.getidList();
-		
-		for(int n=0; n<list.size(); n++) {
-			System.out.println("1 : "+list.get(n).getUserid());
-		}
 		
 		if (list != null) {
 //			RequestDispatcher rd=request.getRequestDispatcher("menu.jsp");

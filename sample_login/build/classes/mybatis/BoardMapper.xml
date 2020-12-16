@@ -28,12 +28,12 @@
 			SELECT * FROM BOARDLIST WHERE IDX=#{idx}
 		]]>
 	</select>
+	
 	<select id="getProfileList" resultType="BoardDTO">
 		<![CDATA[
 			SELECT * FROM BOARDLIST WHERE USERID=#{userid}
 		]]>
 	</select>
-	
 	
 	<update id="getUpdateUser" parameterType="BoardDTO">
 		<![CDATA[
@@ -41,6 +41,11 @@
 		]]>
 	</update>
 	
+	<select id="getidList" parameterType="String" resultType="BoardDTO">
+		<![CDATA[
+			SELECT * FROM BOARDLIST WHERE USERID=#{userid}
+		]]>
+	</select>
 </mapper>
 
 
