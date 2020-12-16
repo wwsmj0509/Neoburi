@@ -13,7 +13,7 @@
 
 <body class="login_body">
 
-<!-- 12월 15일 17:00 김경민 -->
+<!-- 12월 16일 17:35 김경민 -->
 		<%
 			String errMsg = (String)session.getAttribute("errMsg");
 			if(errMsg==null){
