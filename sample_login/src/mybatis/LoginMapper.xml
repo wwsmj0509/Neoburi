@@ -42,4 +42,10 @@
 			UPDATE USERLIST SET PWD=#{pwd}, EMAIL=#{email}, ADDRESS=#{address} WHERE USERID=#{userid}
 		]]>
 	</update>
+	
+	<select id="getidList" resultType="idDTO">
+		<![CDATA[
+			SELECT USERID FROM USERLIST ORDER BY USERID
+		]]>
+	</select>
 </mapper>

@@ -1,6 +1,9 @@
+<%@page import="java.util.List"%>
+<%@page import="com.login.entity.id_entity"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,13 +12,55 @@
 <link href="../style.css" rel="stylesheet" type="text/css">
 <link href="style.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+    	
+        $.ajax({
+            type : "POST", //전송방식을 지정한다 (POST,GET)
+            url : "idList.do",//호출 URL을 설정한다. GET방식일경우 뒤에 파라티터를 붙여서 사용해도된다.
+            dataType : "html",//호출한 페이지의 형식이다. xml,json,html,text등의 여러 방식을 사용할 수 있다.
+            error : function(){
+                alert("통신실패!!!!");
+            },
+            success : function(id_data){
+                alert("통신 성공~!!!");
+            }
+             
+        });
+    });
+
+function filter(){
+        var value, name, item, i;
+
+        value = document.getElementById("value").value.toUpperCase();
+        item = document.getElementsByClassName("item");
+
+        for(i=0;i<item.length;i++){
+          name = item[i].getElementsByClassName("name");
+          if(name[0].innerHTML.toUpperCase().indexOf(value) > -1){
+            item[i].style.display = "flex";
+          }else{
+            item[i].style.display = "none";
+          }
+        }
+      }
+</script>
+
+ 
+	
 
 </head>
 
 <body>
 	<div id="menu">
+	<%
+	List<id_entity> idList = (List<id_entity>)session.getAttribute("idlist");
 	
-
+ 	for(int n=0; n<idList.size(); n++){
+ 		System.out.println("id : "+idList.get(n).getUserid());
+ 	}
+	%>
 	<c:if test="${empty logOK}">
 		<a class = "a" href="/insta/login.jsp" >인스타그램</a>
 		<a class = "a" href="/insta/login.jsp" >로그인</a>
@@ -24,16 +69,43 @@
 
 	<c:if test="${!empty logOK}">
 		<a class = "a" href="/insta/boardList.do" >인스타그램</a>
-		<form id="menu_form" action="/insta/search.do" method="post">
-			<input type="text" placeholder="검색어를 입력해 주세요" name="search_word">
-			<input type="submit" value="검색">
-		</form>
+<!-- 		<form action="" method="post"> -->
+<!-- 			<div class="searchbox"> -->
+<!--       			<div class="header"> -->
+<!--         			<h1>Search</h1> -->
+<!--         		<input onkeyup="filter()" type="text" id="value" placeholder="Type to Search"> -->
+<!--       			</div> -->
+	
+<!--       			<div class="container"> -->
+<%-- 					<%for(int n=0; n<idList.size(); n++){%> --%>
+<!--          		<div class="item">  -->
+<%-- 	           		<span class="name"><%=idList.get(n).getUserid()%></span>  --%>
+<!--          		</div>  -->
+<%-- 					<%}%> --%>
+<!--       			</div> -->
+<!--     		</div> -->
+<!-- 		</form> -->
 		<a class = "a" href="/insta/profileList.do?id=${logOK.userid}" >마이페이지</a>
 		<a class = "a" href="/insta/write/user_write.jsp" >글쓰기</a>
 		<a class = "a" href="/insta/login/user_info.jsp" >정보 변경</a>
 		<a class = "a" href="/insta/logout.do" >로그아웃</a>
-    
 	</c:if>
-
 	</div>
+	
+	
+	<div class="searchbox">
+      <div class="header">
+        <h1>Search</h1>
+        <input onkeyup="filter()" type="text" id="value" placeholder="Type to Search">
+      </div>
+	
+      <div class="container">
+		<%for(int n=0; n<idList.size(); n++){%>
+         <div class="item"> 
+           <span class="name"><%=idList.get(n).getUserid()%></span> 
+         </div> 
+		<%}%>
+      </div>
+    </div>
+
 	<hr>

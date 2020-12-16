@@ -66,6 +66,6 @@ select * from boardlist;
 select * from reply;
 
 
-
+SELECT USERID FROM USERLIST ORDER BY USERID;
 SELECT * FROM REPLY WHERE boardidx=3 ORDER BY IDX DESC;
 
