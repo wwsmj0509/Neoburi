@@ -39,7 +39,7 @@ function blankCheck(){
 
 </script>
 
-<form action="/insta/boardlist.do" method="post" id="form_id"
+<form action="/insta/boardList.do" method="post" id="form_id"
 	name="form_name" onsubmit="return blankCheck();">
 	<table>
 		<tr>
