@@ -1,3 +1,4 @@
+<%@page import="com.login.entity.login_entity"%>
 <%@page import="java.util.List"%>
 <%@page import="com.login.entity.id_entity"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -12,88 +13,96 @@
 <link href="../style.css" rel="stylesheet" type="text/css">
 <link href="style.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
-<script type="text/javascript">
-	function filter() {
-		var value, name, item, i;
-
-		value = document.getElementById("value").value.toUpperCase();
-		item = document.getElementsByClassName("item");
-
-		for (i = 0; i < item.length; i++) {
-			name = item[i].getElementsByClassName("name");
-			if (name[0].innerHTML.toUpperCase().indexOf(value) > -1) {
-				item[i].style.display = "flex";
-			} else {
-				item[i].style.display = "none";
-			}
-		}
-	}
-</script>
-
-
-
-
+<script src="https://kit.fontawesome.com/b97968ecfe.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 	<div id="menu">
 		<%
 			List<id_entity> idList = (List<id_entity>) session.getAttribute("idlist");
+		login_entity loginEntity = (login_entity) session.getAttribute("logOK");
+
+		for (int n = 0; n < idList.size(); n++) {
+			if (idList.get(n).getUserid().equals(loginEntity.getUserid())) {
+				idList.remove(n);
+			}
+
+		}
 		%>
+
 		<c:if test="${empty logOK}">
-			<a class="a" href="/insta/login.jsp">인스타그램</a>
+			<a class="a logo" href="/insta/login.jsp" >EZENSTAGRAM</a>
 			<a class="a" href="/insta/login.jsp">로그인</a>
 			<a class="a" href="login/signUp.jsp">회원 가입</a>
 		</c:if>
 
 		<c:if test="${!empty logOK}">
-			<a class="a" href="/insta/boardList.do">인스타그램</a>
-			<!-- 		<form action="" method="post"> -->
-			<!-- 			<div class="searchbox"> -->
-			<!--       			<div class="header"> -->
-			<!--         			<h1>Search</h1> -->
-			<!--         		<input onkeyup="filter()" type="text" id="value" placeholder="Type to Search"> -->
-			<!--       			</div> -->
+			
+			<a class="a logo" href="/insta/boardList.do">EZENSTAGRAM</a>
+			
+			<div class="searchbox">
+				<input onkeyup="filter()" type="text" id="value"
+					placeholder="&#xF002; 검색" class="search_input" 
+					oninput='showUserList()'>
 
-			<!--       			<div class="container"> -->
-			<%-- 					<%for(int n=0; n<idList.size(); n++){%> --%>
-			<!--          		<div class="item">  -->
-			<%-- 	           		<span class="name"><%=idList.get(n).getUserid()%></span>  --%>
-			<!--          		</div>  -->
-			<%-- 					<%}%> --%>
-			<!--       			</div> -->
-			<!--     		</div> -->
-			<!-- 		</form> -->
-			<a class="a" href="/insta/profileList.do?id=${logOK.userid}">마이페이지</a>
-			<a class="a" href="/insta/write/user_write.jsp">글쓰기</a>
-			<a class="a" href="/insta/login/user_info.jsp">정보 변경</a>
-			<a class="a" href="/insta/logout.do">로그아웃</a>
+				<div class="itemList">
+					<%
+						for (int n = 0; n < idList.size(); n++) {
+					%>
+					<div class="item" onclick="location.href='/insta/idprofile.do?id=<%=idList.get(n).getUserid()%>'">
+						
+						<img src="/insta/profile_img/<%=idList.get(n).getProfileimg()%>" class="itemlist_img"/>
+						<span class="itemlist_name">
+							<%=idList.get(n).getUserid()%>
+						</span>
+					</div>
+					<%
+						}
+					%>
+				</div>
+			</div>
+			
+			
+			<div class="icon_box">
+			<i class="fas fa-user fa-2x mypageIcon" onclick="location.href='/insta/profileList.do?id=${logOK.userid}'"></i>
+			<i class="fas fa-pencil-alt fa-2x writeIcon" onclick="location.href='/insta/write/user_write.jsp'"></i>
+<!-- 			<a class="a" href="/insta/login/user_info.jsp">정보 변경</a> -->		
+			<i class="fas fa-power-off fa-2x logoutIcon" onclick="location.href='/insta/logout.do'"></i>
+			</div>
+			
+
 		</c:if>
 	</div>
 
+	<script type="text/javascript">
+		function filter() {
+			var value, name, item, i;
 
-	<div class="searchbox">
-		<div class="header">
-			<h1>Search</h1>
-			<input onkeyup="filter()" type="text" id="value"
-				placeholder="Type to Search">
-		</div>
+			value = document.getElementById("value").value.toUpperCase();
+			item = document.getElementsByClassName("item");
 
-		<div class="container">
-			<%
-				for (int n = 0; n < idList.size(); n++) {
-			%>
-			<div class="item">
-				<span class="name"
-					onclick="location.href='/insta/idprofile.do?id=<%=idList.get(n).getUserid()%>'">
-					<%=idList.get(n).getUserid()%>
-				</span>
-			</div>
-			<%
+			for (i = 0; i < item.length; i++) {
+				name = item[i].getElementsByClassName("name");
+				if (name[0].innerHTML.toUpperCase().indexOf(value) > -1) {
+					item[i].style.display = "flex";
+				} else {
+					item[i].style.display = "none";
 				}
-			%>
-		</div>
-	</div>
+			}
+		}
 
-	<hr>
+		function showUserList() {
+			var chk = $('.search_input').val();
+			console.log(chk);
+			if (chk == '') {
+				$('.itemList').css('display', 'none');
+			} else {
+				$('.itemList').css('display', 'block');
+			}
+
+		}
+	</script>
+
+
+
+

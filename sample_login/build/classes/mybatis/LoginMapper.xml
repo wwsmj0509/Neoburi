@@ -45,7 +45,7 @@
 	
 	<select id="getidList" resultType="idDTO">
 		<![CDATA[
-			SELECT USERID FROM USERLIST ORDER BY USERID
+			SELECT USERID,PROFILEIMG FROM USERLIST ORDER BY USERID
 		]]>
 	</select>
 	
