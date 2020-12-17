@@ -29,9 +29,9 @@ create sequence board_seq increment by 1 start with 1 nocycle nocache;
 insert into boardlist(idx,userid,imgpath,content,logtime)
 				values(board_seq.nextval,'admin','1.jpg','testupload',SYSDATE);
 insert into boardlist(idx,userid,imgpath,content,logtime)
-values(board_seq.nextval,'admin','2.jfif','testupload2',SYSDATE);
+values(board_seq.nextval,'admin','2.jpg','testupload2',SYSDATE);
 insert into boardlist(idx,userid,imgpath,content,logtime)
-values(board_seq.nextval,'admin','3.jfif','testupload3',SYSDATE);
+values(board_seq.nextval,'admin','3.jpg','testupload3',SYSDATE);
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -57,8 +57,8 @@ select * from reply;
 
 SELECT USERID FROM USERLIST where userid not in ('hi') ORDER BY USERID;
 
-UPDATE boardlist SET IMGPATH= '2.jpg' WHERE idx=4;
-UPDATE boardlist SET IMGPATH= '3.jpg' WHERE idx=5;
+UPDATE boardlist SET IMGPATH= '2.jpg' WHERE idx=2;
+UPDATE boardlist SET IMGPATH= '3.jpg' WHERE idx=3;
 
 SELECT USERID FROM USERLIST ORDER BY USERID;
 SELECT * FROM REPLY WHERE boardidx=3 ORDER BY IDX DESC;
