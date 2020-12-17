@@ -30,7 +30,7 @@
 
 <body class="login_body">
 
-<!-- 12월 16일 17:35 김경민 -->
+<!--12월 17일 수정 -->
 		<%
 			String errMsg = (String)session.getAttribute("errMsg");
 			if(errMsg==null){
