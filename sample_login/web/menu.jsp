@@ -37,6 +37,7 @@
 		</c:if>
 
 		<c:if test="${!empty logOK}">
+
 			
 			<a class="a logo" href="/insta/boardList.do">EZENSTAGRAM</a>
 			
