@@ -26,20 +26,7 @@
 			<div><span>작성일 : ${imgBoard.logtime }</span></div>
 		</div>
 	</div>
-<!-- 		<tr> -->
-<!-- 			<td>프로필사진</td>  -->
-<%-- 			<td>${imgBoard.userid }</td>  --%>
-<!-- 		</tr> -->
-<!-- 		<tr> -->
-<!-- 			<td colspan="1"> -->
-<%-- 				<a href="boardView.do?idx=${imgBoard.idx}"> --%>
-<%-- 				<img src="/board/storage/${imgBoard.imagePath}" width="50" height="50" border="0"></a> --%>
-<!-- 			</td> -->
-<!-- 		</tr> -->
-<!-- 		<tr> -->
-<%-- 			<td>${imgBoard.content}</td> --%>
-<!-- 		</tr> -->
-			
+
 		</c:forEach>
 	</c:if>
 	

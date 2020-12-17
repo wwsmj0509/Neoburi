@@ -13,7 +13,7 @@
 <link href="../style.css" rel="stylesheet" type="text/css">
 <link href="style.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
+<script src="https://kit.fontawesome.com/b97968ecfe.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -31,21 +31,18 @@
 		%>
 
 		<c:if test="${empty logOK}">
-			<a class="a" href="/insta/login.jsp">인스타그램</a>
+			<a class="a logo" href="/insta/login.jsp" >EZENSTAGRAM</a>
 			<a class="a" href="/insta/login.jsp">로그인</a>
 			<a class="a" href="login/signUp.jsp">회원 가입</a>
 		</c:if>
 
 		<c:if test="${!empty logOK}">
-			<a class="a" href="/insta/boardList.do">인스타그램</a>
-			<a class="a" href="/insta/profileList.do?id=${logOK.userid}">마이페이지</a>
-			<a class="a" href="/insta/write/user_write.jsp">글쓰기</a>
-			<a class="a" href="/insta/login/user_info.jsp">정보 변경</a>
-			<a class="a" href="/insta/logout.do">로그아웃</a>
-
+			
+			<a class="a logo" href="/insta/boardList.do">EZENSTAGRAM</a>
+			
 			<div class="searchbox">
 				<input onkeyup="filter()" type="text" id="value"
-					placeholder="Type to Search" class="search_input"
+					placeholder="&#xF002; 검색" class="search_input" 
 					oninput='showUserList()'>
 
 				<div class="itemList">
@@ -53,7 +50,9 @@
 						for (int n = 0; n < idList.size(); n++) {
 					%>
 					<div class="item" onclick="location.href='/insta/idprofile.do?id=<%=idList.get(n).getUserid()%>'">
-						<span class="name">
+						
+						<img src="/insta/profile_img/<%=idList.get(n).getProfileimg()%>" class="itemlist_img"/>
+						<span class="itemlist_name">
 							<%=idList.get(n).getUserid()%>
 						</span>
 					</div>
@@ -62,6 +61,15 @@
 					%>
 				</div>
 			</div>
+			
+			
+			<div class="icon_box">
+			<i class="fas fa-user fa-2x mypageIcon" onclick="location.href='/insta/profileList.do?id=${logOK.userid}'"></i>
+			<i class="fas fa-pencil-alt fa-2x writeIcon" onclick="location.href='/insta/write/user_write.jsp'"></i>
+<!-- 			<a class="a" href="/insta/login/user_info.jsp">정보 변경</a> -->		
+			<i class="fas fa-power-off fa-2x logoutIcon" onclick="location.href='/insta/logout.do'"></i>
+			</div>
+			
 
 		</c:if>
 	</div>
@@ -98,6 +106,3 @@
 
 
 
-
-
-	<hr>

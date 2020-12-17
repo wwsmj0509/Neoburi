@@ -30,9 +30,11 @@ public class idListService implements CommandAction {
 //			request.setAttribute("idlist", list);
 //			rd.forward(request, response);
 			HttpSession s=request.getSession();
+			
+			
 			s.setAttribute("idlist", list); 
 		}
 		
-		return "menu.jsp";
+		return "";
 	}
 }

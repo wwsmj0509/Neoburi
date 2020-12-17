@@ -10,7 +10,9 @@ address varchar2(160),
 profileimg varchar2(200),
 chk varchar2(12));
 
-insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('admin','1111','어드민',' ',' ',' ','master');
+insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('admin','1111','어드민',' ',' ','unimg.jpg','master');
+
+delete from userlist where userid='admin'
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
