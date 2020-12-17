@@ -59,25 +59,8 @@
 
 		<c:if test="${!empty logOK}">
 			<a class="a" href="/insta/boardList.do">인스타그램</a>
-			<!-- 		<form action="" method="post"> -->
-			<!-- 			<div class="searchbox"> -->
-			<!--       			<div class="header"> -->
-			<!--         			<h1>Search</h1> -->
-			<!--         		<input onkeyup="filter()" type="text" id="value" placeholder="Type to Search"> -->
-			<!--       			</div> -->
-
-			<!--       			<div class="container"> -->
-			<%-- 					<%for(int n=0; n<idList.size(); n++){%> --%>
-			<!--          		<div class="item">  -->
-			<%-- 	           		<span class="name"><%=idList.get(n).getUserid()%></span>  --%>
-			<!--          		</div>  -->
-			<%-- 					<%}%> --%>
-			<!--       			</div> -->
-			<!--     		</div> -->
-			<!-- 		</form> -->
 			<a class="a" href="/insta/profileList.do?id=${logOK.userid}">마이페이지</a>
 			<a class="a" href="/insta/write/user_write.jsp">글쓰기</a>
-			<a class="a" href="/insta/login/user_info.jsp">정보 변경</a>
 			<a class="a" href="/insta/logout.do">로그아웃</a>
 		</c:if>
 	</div>

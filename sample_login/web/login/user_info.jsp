@@ -16,40 +16,17 @@ function jusoCallBack(roadFullAddr){
 		document.form_name.change_address.value=roadFullAddr;  /* input의 name값을통해 찾는다. */
 }
 
-function pwdchk(){
-	var rpwd = $('input[name=input_pwd]').val();
-	
-	if(${logOK.pwd} == rpwd){
-		alert("현재 비밀번호와 일치합니다");
-		chk = "true";
-		var chkbtn = document.getElementById('button');
-		chkbtn.disabled = true;
-		
-		var pwdrock = document.getElementById('password');
-		pwdrock.disabled = true;
-	}else{
-		alert("현재 비밀번호와 틀립니다");
-		chk = "false";
-	}
-}
+
 
 function blankCheck(){
-	   var pwd = $('input[name=change_pwd]').val();
+	var pwd = $('input[name=change_pwd]').val();
+	   
+	if(document.form_name.change_pwd.value == ""){
+		document.form_name.change_pwd.value="${logOK.pwd}";
+	}
+	    return true;
 
-	   if(chk=="true"){
-	      if(document.form_name.change_pwd.value == ""){
-	         document.form_name.change_pwd.value="${logOK.pwd}";
-	      }
-	      return true;
-	   }else{
-	      alert("현재 비밀번호와 틀립니다")
-	      return false;
-	   }
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/heads/feature/jiseong
 </script>
 
 <form action="/insta/user_info.do" method="post" id="form_id"
@@ -62,12 +39,7 @@ function blankCheck(){
 			<td>현재 아이디 :</td>
 			<td name="real_userid">${logOK.userid}</td>
 		</tr>
-		<tr>
-			<td>현재 비밀번호</td>
-			<td><input type="password" id="password" placeholder="현재 비밀번호"
-				name="input_pwd" autocomplete=off> <input type="button"
-				id="button" value="비번 chk" onclick="pwdchk();" autocomplete=off></td>
-		</tr>
+
 		<tr>
 			<td>변경 비밀번호</td>
 			<td><input type="password" placeholder="바꿀 비밀번호"
