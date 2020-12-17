@@ -61,6 +61,7 @@ SELECT USERID FROM USERLIST where userid not in ('hi') ORDER BY USERID;
 
 UPDATE boardlist SET IMGPATH= '2.jpg' WHERE idx=2;
 UPDATE boardlist SET IMGPATH= '3.jpg' WHERE idx=3;
+UPDATE userlist SET profileimg= 'dog.jpg' WHERE userid='hi';
 
 SELECT USERID FROM USERLIST ORDER BY USERID;
 SELECT * FROM REPLY WHERE boardidx=3 ORDER BY IDX DESC;

@@ -83,7 +83,7 @@
 			item = document.getElementsByClassName("item");
 
 			for (i = 0; i < item.length; i++) {
-				name = item[i].getElementsByClassName("name");
+				name = item[i].getElementsByClassName("itemlist_name");
 				if (name[0].innerHTML.toUpperCase().indexOf(value) > -1) {
 					item[i].style.display = "flex";
 				} else {
@@ -93,11 +93,13 @@
 		}
 
 		function showUserList() {
+			
 			var chk = $('.search_input').val();
 			console.log(chk);
 			if (chk == '') {
 				$('.itemList').css('display', 'none');
 			} else {
+				filter();
 				$('.itemList').css('display', 'block');
 			}
 
