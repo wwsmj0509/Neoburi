@@ -1,2 +1,7 @@
+/.DS_Store
 /com/
+<<<<<<< HEAD
+=======
+/controller/
+>>>>>>> branch 'develop' of https://github.com/wwsmj0509/Neoburi.git
 /mybatis/

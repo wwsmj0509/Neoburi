@@ -20,7 +20,7 @@
 //                 alert("통신실패!!!!");
             },
             success : function(id_data){
-//                 alert("통신 성공~!!!");
+//                 alert("통신성공");
             }
              
         });

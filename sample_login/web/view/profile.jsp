@@ -10,11 +10,12 @@
 		<div>
 			<img name="profileimg" src="/insta/profile_img/${logOK.profileimg}" width="300px">
 		</div>
-		 <tr>
-			<td><b>이미지</b></td>
-			<td><input type="file" name="imgpath" size="55"></td>
+		<div>
+			<div><b>이미지</b></div>
+			<div><input type="file" name="imgpath" size="55"></div>
 			<input type="submit" value="이미지 변경 확인 버튼"/>
-	   	</tr>
+			<input type="button" onClick="location.href='/insta/login/chk_pwd.jsp'" value="정보 변경"/>
+		</div>
 		<div style="border: 1px solid #48BAE4; height: auto; width: 650px;">
 		
 		<c:if test="${!empty polist}">
