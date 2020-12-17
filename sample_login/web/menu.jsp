@@ -1,3 +1,4 @@
+<%@page import="com.login.entity.login_entity"%>
 <%@page import="java.util.List"%>
 <%@page import="com.login.entity.id_entity"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -40,7 +41,16 @@
 	<div id="menu">
 		<%
 			List<id_entity> idList = (List<id_entity>) session.getAttribute("idlist");
-		%>
+			login_entity loginEntity = (login_entity)session.getAttribute("logOK");
+			
+			
+			for(int n=0; n<idList.size(); n++){
+				if(idList.get(n).getUserid().equals(loginEntity.getUserid())){
+					idList.remove(n);
+				}
+				
+			}%>
+		
 		<c:if test="${empty logOK}">
 			<a class="a" href="/insta/login.jsp">인스타그램</a>
 			<a class="a" href="/insta/login.jsp">로그인</a>

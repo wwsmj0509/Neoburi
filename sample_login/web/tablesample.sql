@@ -55,7 +55,8 @@ select * from userlist ;
 select * from boardlist;
 select * from reply;
 
-SELECT * FROM BOARDLIST where userid='ab';
+SELECT USERID FROM USERLIST where userid not in ('hi') ORDER BY USERID;
+
 UPDATE boardlist SET IMGPATH= '2.jpg' WHERE idx=4;
 UPDATE boardlist SET IMGPATH= '3.jpg' WHERE idx=5;
 

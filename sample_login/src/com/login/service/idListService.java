@@ -22,7 +22,7 @@ public class idListService implements CommandAction {
 		System.out.println("idlist서비스 들어옴");
 		
 		login_dao dao = new login_dao();
-
+		
 		List<id_entity> list = dao.getidList();
 		
 		if (list != null) {
