@@ -85,9 +85,9 @@ public class imgBoard_dao {
 	}
 	
 	//List -----------------------------------------------------------------
-	public List<imgBoard_entity> getUserList() {
+	public List<imgBoard_entity> getBoardList(Map<String, Integer> map) { // 이름 변경함 확인후 주석 삭제
 		SqlSession session = factory.openSession();
-		List<imgBoard_entity> list = session.selectList("mybatis.BoardMapper.getBoardList");
+		List<imgBoard_entity> list = session.selectList("mybatis.BoardMapper.getBoardList",map);
 		
 		session.close();
 		return list;
@@ -135,6 +135,12 @@ public class imgBoard_dao {
 		SqlSession session = factory.openSession();
 		List<imgBoard_entity> list = session.selectList("mybatis.BoardMapper.getidList",userid);
 		return list;
+	}
+
+
+	public int getTotalArticle() {
+		
+		return 0;
 	}
 
 
