@@ -58,6 +58,11 @@ select * from reply;
 SELECT * FROM BOARDLIST where userid='ab';
 UPDATE boardlist SET IMGPATH= '2.jpg' WHERE idx=4;
 UPDATE boardlist SET IMGPATH= '3.jpg' WHERE idx=5;
+select * from rec;
+SELECT COUNT(*) FROM REC WHERE REC_ID = 'ab' AND REC_NUM = 3;
+INSERT INTO REC VALUES('ab', '3');
+delete from rec where REC_ID = 'ab' AND REC_NUM = '3';
+INSERT INTO REC VALUES('ab', '4')
 
 SELECT USERID FROM USERLIST ORDER BY USERID;
 SELECT * FROM REPLY WHERE boardidx=3 ORDER BY IDX DESC;

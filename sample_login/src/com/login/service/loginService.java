@@ -38,11 +38,6 @@ public class loginService implements CommandAction{
 			return "login.jsp";
 		}
 		
-		
-		
-	}
 
-	
-	
-	
+	}
 }

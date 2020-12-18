@@ -24,9 +24,7 @@ public class enterJoinService implements CommandAction {
 		HttpSession session=request.getSession();
 		session.setAttribute("UserList", list);
 		
-		
 	
-		
 		return "/login/signUp.jsp";
 	}
 

@@ -46,6 +46,19 @@
 			SELECT * FROM BOARDLIST WHERE USERID=#{userid}
 		]]>
 	</select>
+	
+	<select id="rec_check" parameterType="recDTO" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM REC WHERE REC_ID=#{userid} AND REC_NUM=#{idx}
+	</select>
+	
+	<insert id="rec_update" parameterType="recDTO">
+		INSERT INTO REC VALUES(#{userid}, #{idx})
+	</insert>
+	
+	<delete id="rec_delete" parameterType="recDTO">
+		DELETE FROM REC WHERE REC_ID = #{userid} AND REC_NUM = #{idx}
+	</delete>
+	
 </mapper>
 
 
