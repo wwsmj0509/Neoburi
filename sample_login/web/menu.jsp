@@ -14,13 +14,15 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://kit.fontawesome.com/b97968ecfe.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
 	<div id="menu">
-		<%
-			List<id_entity> idList = (List<id_entity>) session.getAttribute("idlist");
-		login_entity loginEntity = (login_entity) session.getAttribute("logOK");
+<%
+	List<id_entity> idList = (List<id_entity>) session.getAttribute("idlist");
+	System.out.println(idList);
+	login_entity loginEntity = (login_entity) session.getAttribute("logOK");
 
 		for (int n = 0; n < idList.size(); n++) {
 			if (idList.get(n).getUserid().equals(loginEntity.getUserid())) {
@@ -28,7 +30,7 @@
 			}
 
 		}
-		%>
+%>
 
 		<c:if test="${empty logOK}">
 			<a class="a logo" href="/insta/login.jsp" >EZENSTAGRAM</a>

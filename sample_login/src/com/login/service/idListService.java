@@ -23,18 +23,21 @@ public class idListService implements CommandAction {
 		
 		login_dao dao = new login_dao();
 		
-		List<id_entity> list = dao.getidList();
+		List<id_entity> idlist = dao.getidList();
 		
-		if (list != null) {
+		for(int n=0; n<idlist.size(); n++) {
+			System.out.println(idlist.get(n).getUserid());
+			System.out.println(idlist.get(n).getProfileimg());
+		}
+		if (idlist != null) {
 //			RequestDispatcher rd=request.getRequestDispatcher("menu.jsp");
 //			request.setAttribute("idlist", list);
 //			rd.forward(request, response);
 			HttpSession s=request.getSession();
 			
-			
-			s.setAttribute("idlist", list); 
+			s.setAttribute("idlist", idlist); 
 		}
 		
-		return "";
+		return "login.jsp";
 	}
 }
