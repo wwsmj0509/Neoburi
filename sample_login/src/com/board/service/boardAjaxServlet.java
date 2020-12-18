@@ -30,7 +30,7 @@ public class boardAjaxServlet extends HttpServlet {
 		int total=dao.getTotalArticle();//총글수	
 		System.out.println("total : "+total);
 	
-		int pageSize = 5;					//한 페이지에 출력할 게시물 
+		int pageSize = 3;					//한 페이지에 출력할 게시물 
 		int endNum = pg*pageSize;			// 끝번호 
 		int startNum = endNum - (pageSize-1);
 		

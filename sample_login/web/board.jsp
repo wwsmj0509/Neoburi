@@ -10,13 +10,10 @@
 var pg = 1;
 
 $(function(){ 
-	// 처음 시작시 board.jsp로 바로가기 때문에 다름 값이 없어서
-	//	boardList.do 에서 Page 1번을 불러옴 
 	function startPost(){
 		$.post("boardList.do",{pg:pg})
 	}
 })
-
 $(window).scroll(function() {
 	if ($(window).scrollTop() == $(document).height() - $(window).height()) {
 		++pg;
