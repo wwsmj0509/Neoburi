@@ -33,25 +33,29 @@ function lastPost(){
 			var append_div = "";
 	  		   append_div += "<div class='scrolling'>";
 	 		   append_div += "<div><span>프로필사진 "+listObj[i].boardUserid+"</span></div>"; 
-	 		   append_div += "<div><a href='boardView.do?idx="+listObj[i].Idx+"'>";
+	 		   append_div += "<div><a href='boardView.do?idx="+listObj[i].boardIdx+"'>";
 	 		   append_div += "<img src='/insta/storage/"+listObj[i].boardImgPath+"' width=200 height=200 border=0></a>";
 			   append_div += "</div>";
-			   append_div += "<div><span>아이콘1</span><span>아이콘2</span><span>아이콘3</span>";
+			   append_div += "<div>";
+			   append_div += "<span>아이콘1</span>";
+			   append_div += "<span>아이콘2</span>";
+			   append_div += "<span>아이콘3</span>";
 			   append_div += "</div>";
 			   append_div += "<div>"+listObj[i].boardContent+"</div>";
 			   append_div += "<div><a href='boardView.do?idx="+listObj[i].boardIdx+"'>댓글 달기</a></div>"; 
 			   append_div += "<div><span>작성일 : "+listObj[i].boardDate+"</span></div>";
 			   append_div += "</div>";
-				$(".scrolling:last").append(append_div);
+				$("#appendList:last").append(append_div);
 				}
 			}
 		});
 }
+
 </script>
 
 <c:if test="${!empty list }">
-	<c:forEach items="${list}" var="imgBoard" >
 	<div id="appendList">
+	<c:forEach items="${list}" var="imgBoard" >
 		<div class="scrolling">
  		   <div><span id="userid">프로필사진 ${imgBoard.userid}</span></div>
  		   <div>
@@ -67,9 +71,9 @@ function lastPost(){
 		   <div><a href='boardView.do?idx=${imgBoard.idx}'>댓글 달기</a></div>
 		   <div><span id="logtime">작성일 : ${imgBoard.logtime }</span></div>
 		   </div>
-	   </div>
 
 		</c:forEach>
+	   </div>
 	</c:if>
 	
 </body>
