@@ -29,14 +29,6 @@ public class imgBoard_dao {
 			e.printStackTrace();
 		}
 	}
-	//board list -----------------------------------------------------------------
-	
-	public List<imgBoard_entity> getImageBoardList(Map<String, Object> map) {
-		SqlSession session=factory.openSession();
-		List<imgBoard_entity> list=session.selectList("", map);
-		session.close();
-		return list;
-	}
 	
 	
 	//write -----------------------------------------------------------------
@@ -137,17 +129,13 @@ public class imgBoard_dao {
 		return list;
 	}
 
-
-	public int getTotalArticle() {
+	//board list total check-----------------------------------------------------------------
+	public int getTotalArticle() { //총 게시물 수 
+		SqlSession session = factory.openSession();
+		int n = session.selectOne("mybatis.BoardMapper.getTotalArticle");
 		
-		return 0;
+		session.close();
+		return n;
 	}
-
-
-
-
-	
-
-	//Delete -----------------------------------------------------------------
 
 }

@@ -49,6 +49,14 @@
 			SELECT * FROM BOARDLIST WHERE USERID=#{userid}
 		]]>
 	</select>
+	
+		<!-- 총 게시물 개수 구하기 -->
+	<select id="getTotalArticle" resultType="java.lang.Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM BOARDLIST
+		]]>
+	</select>
+	
 </mapper>
 
 
