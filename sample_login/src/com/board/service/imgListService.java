@@ -19,7 +19,6 @@ public class imgListService implements CommandAction {
 		
 		
 		List<imgBoard_entity> list = dao.getUserList();
-		System.out.println("list : "+list.get(0).getImgPath());
 		// getUserList라는 메소드를 쓰는데 이 메소드의 맵퍼 id는 getBoardList 임
 		// getUserList라는 메소드이름보다는 getBoardList 라는 이름이 맞는거같음
 		// 확인해주세요

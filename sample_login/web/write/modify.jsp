@@ -20,13 +20,12 @@ function checkBoardWrite(){
 <%
 	imgBoard_entity entity = (imgBoard_entity)request.getAttribute("entity");
 	int seq = (Integer)request.getAttribute("seq");
-	int pg = (Integer)request.getAttribute("pg");
 	
 	login_entity log = (login_entity)session.getAttribute("logOK");
 %>
 
 <form name="boardModifyForm" method="post" 
-                   action="/bbs/boardUpdate.do?seq=<%=seq%>&pg=<%=pg%>">
+                   action="boardUpdate.do?seq=<%=seq%>">
 <h3>글수정</h3>
 <table border="1" >
 	<tr>

@@ -63,6 +63,7 @@ public class imgBoard_dao {
 	public imgBoard_entity getBoard(int seq) {
 		SqlSession session = factory.openSession();
 		imgBoard_entity entity = session.selectOne("mybatis.BoardMapper.getBoard",seq);
+		System.out.println("entity : : :" + entity);
 		session.close();
 		return entity;
 	}
@@ -72,8 +73,10 @@ public class imgBoard_dao {
 	public void boardDelete(int seq) {
 		SqlSession session = factory.openSession();
 		int n=0;
+		System.out.println("delete mon in");
 		try{
 			n=session.delete("mybatis.BoardMapper.boardDelete",seq);
+			System.out.println("n::::"+n);
 			if(n > 0)
 				session.commit();
 			}catch(Exception e) {

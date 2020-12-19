@@ -15,7 +15,7 @@ insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('admin
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
 create table boardlist(
-idx number(6) primary key,		--글번호
+idx number(6) ,		--글번호
 userid varchar2(15) not null,	--유져이름
 imgpath varchar2(80),   -- 이미지 경로
 content varchar2(200),		--글내용
@@ -54,15 +54,17 @@ create sequence reply_seq increment by 1 start with 1 nocycle nocache;
 select * from userlist ;
 select * from boardlist;
 select * from reply;
-
-SELECT * FROM BOARDLIST where userid='ab';
-UPDATE boardlist SET IMGPATH= '2.jpg' WHERE idx=4;
-UPDATE boardlist SET IMGPATH= '3.jpg' WHERE idx=5;
 select * from rec;
-SELECT COUNT(*) FROM REC WHERE REC_ID = 'ab' AND REC_NUM = 3;
-INSERT INTO REC VALUES('ab', '3');
-delete from rec where REC_ID = 'ab' AND REC_NUM = '3';
-INSERT INTO REC VALUES('ab', '4')
+create table rec(
+userid varchar2(15),
+idx number(6)		--글번호
+);
+
+SELECT * FROM REC
+drop table rec;
+
+drop table boardlist;
+
 
 SELECT USERID FROM USERLIST ORDER BY USERID;
 SELECT * FROM REPLY WHERE boardidx=3 ORDER BY IDX DESC;

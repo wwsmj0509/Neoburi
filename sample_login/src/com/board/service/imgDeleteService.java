@@ -8,8 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.board.dao.imgBoard_dao;
 import com.board.entity.imgBoard_entity;
-import com.login.entity.login_entity;
-import com.reply.dao.imgReply_dao;
 
 import controller.CommandAction;
 
@@ -21,15 +19,13 @@ public class imgDeleteService implements CommandAction{
 		
 		System.out.println("delete enter");
 		
-		int seq = Integer.parseInt(request.getParameter("seq"));
-		int pg = Integer.parseInt(request.getParameter("pg"));
+		int seq = Integer.parseInt(request.getParameter("idx"));
+		System.out.println("idx: "+seq);
 				
 		imgBoard_dao dao = new imgBoard_dao();
 		dao.boardDelete(seq);
-				
-		request.setAttribute("pg", pg);
-				
-		return "board/delete.jsp";
+					
+		return "write/delete.jsp";
 		
 	}
 

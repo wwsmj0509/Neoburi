@@ -39,10 +39,10 @@ public class RecUpdateService implements CommandAction {
 		System.out.println(result);
 		if(result == 0){ // 추천하지 않았다면 추천 추가
 			dao.recUpdate(rec_entity);
-			System.out.println("re 0000");
+			System.out.println("re 11111");
 		}else{
 			dao.recDelete(rec_entity);
-			System.out.println("re 1111");
+			System.out.println("re 0000");
 		}
 		return "boardList.do";
 	}

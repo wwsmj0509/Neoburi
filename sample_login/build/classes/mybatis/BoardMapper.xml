@@ -17,9 +17,15 @@
 		]]>
 	</insert>
 	
+	<select id="getBoard" parameterType="java.lang.Integer" resultType="BoardDTO">
+		<![CDATA[
+			SELECT * FROM BOARDLIST WHERE IDX=#{seq}
+		]]>
+	</select>
+	
 	<delete id="boardDelete" parameterType="java.lang.Integer">
 		<![CDATA[
-			DELETE BOARDLIST WHERE SEQ=#{seq}
+			DELETE BOARDLIST WHERE IDX=#{seq}
 		]]>
 	</delete>
 	
@@ -48,15 +54,21 @@
 	</select>
 	
 	<select id="rec_check" parameterType="recDTO" resultType="java.lang.Integer">
-		SELECT COUNT(*) FROM REC WHERE REC_ID=#{userid} AND REC_NUM=#{idx}
+		<![CDATA[
+		SELECT COUNT(*) FROM REC WHERE userid=#{userid} AND idx=#{idx}
+		]]>
 	</select>
 	
 	<insert id="rec_update" parameterType="recDTO">
+		<![CDATA[
 		INSERT INTO REC VALUES(#{userid}, #{idx})
+		]]>
 	</insert>
 	
 	<delete id="rec_delete" parameterType="recDTO">
-		DELETE FROM REC WHERE REC_ID = #{userid} AND REC_NUM = #{idx}
+		<![CDATA[
+		DELETE FROM REC WHERE userid = #{userid} AND idx = #{idx}
+		]]>
 	</delete>
 	
 </mapper>

@@ -13,7 +13,7 @@
 			<span>프로필사진</span>
 			<span>${boardView.userid }</span>
 			<c:if test="${logOK.userid == boardView.userid }" > <!--작성자 확인 -->
-			<span><a href="">수정</a></span>
+			<span><a href="boardModify.do?idx=${boardView.idx}">수정</a></span>
 			<span><a href="boardDelete.do?idx=${boardView.idx}">삭제</a></span>
 			</c:if>
 		</div>
