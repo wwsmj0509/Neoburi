@@ -43,7 +43,7 @@
 	
 	<update id="getUpdateUser" parameterType="BoardDTO">
 		<![CDATA[
-			UPDATE BOARDLIST SET TITLE=#{title}, CONTENT=#{content} WHERE IDX=#{idx}
+			UPDATE BOARDLIST SET CONTENT=#{content}, IMGPATH=#{imgPath} WHERE IDX=#{idx}
 		]]>
 	</update>
 	

@@ -106,23 +106,25 @@ public class imgBoard_dao {
 	}
 	
 	//Update -----------------------------------------------------------------
-	public int boardUpdate(imgBoard_entity dto) {
+	public void boardUpdate(imgBoard_entity dto) {
 		SqlSession session=factory.openSession();
-		int n = 0;
-		
+		int n=0;
+		System.out.println("update dao in");
 		try {
-			n = session.insert("mybatis.BoardMapper.getUpdateUser",dto);
-			if(n > 0) {
+			System.out.println("try in");
+			n = session.update("mybatis.BoardMapper.getUpdateUser",dto);
+			System.out.println("try out");
+			if(n>0) {
 				session.commit();
 			}
 		}catch(Exception e) {
+			System.out.println("catch");
 			e.printStackTrace();
 			session.rollback();
 		}finally {
 			session.close();
 		}
-		System.out.println(" User Update OK");
-		return n;
+
 	}
 
 

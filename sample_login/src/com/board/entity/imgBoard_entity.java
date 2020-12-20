@@ -10,7 +10,6 @@ public class imgBoard_entity {
 	private String logtime;
 	
 	
-	
 	public String getImgPath() {
 		return imgPath;
 	}

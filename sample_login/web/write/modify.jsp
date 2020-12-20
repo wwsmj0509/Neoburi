@@ -14,6 +14,14 @@ function checkBoardModify(){
       document.boardModifyForm.submit();
    }
 }
+function setThumbnail(event) {
+	var reader = new FileReader(); reader.onload = function(event) {
+		var img = document.getElementById("img");
+		img.setAttribute("src", event.target.result);
+		 
+		}; 
+		reader.readAsDataURL(event.target.files[0]); 
+	} 
 </script>
 <c:if test="${!empty logOK}">
 
@@ -21,10 +29,11 @@ function checkBoardModify(){
 	imgBoard_entity entity = (imgBoard_entity)request.getAttribute("entity");
 	
 	login_entity log = (login_entity)session.getAttribute("logOK");
+	
 %>
 
 <form name="boardModifyForm" method="post" 
-                   action="userBoardUpdate.do?seq=${entity.idx}">
+                   action="userBoardUpdate.do?idx=${entity.idx}" enctype="multipart/form-data">
 <h3>글수정</h3>
 <table border="1" >
 	<tr>
@@ -34,9 +43,10 @@ function checkBoardModify(){
 	   
 	   <tr>
 			<td><b>이미지</b></td>
-			<td>
-			<img src="/insta/storage/${entity.imgPath}" width="300" height="300" border="0">
-			<input type="file" name="imagepath" size="55" ></td>
+			<td id="image_container">
+			<img id="img" src="/insta/storage/${entity.imgPath}" width="300" height="300" border="0">
+			<input type="hidden" name="myimgpath" value="${entity.imgPath}">
+			<input type="file" name="imgpath" id="image" accept="image/*" onchange="setThumbnail(event);"/></td>
 	   </tr>
 	   
 	   <tr>

@@ -55,6 +55,9 @@ select * from userlist ;
 select * from boardlist;
 select * from reply;
 select * from rec;
+
+UPDATE BOARDLIST SET CONTENT='hi',  IMGPATH='unimg.jpg' WHERE IDX=22;
+
 create table rec(
 userid varchar2(15),
 idx number(6)		--글번호

@@ -1,5 +1,9 @@
 package com.board.service;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,27 +24,31 @@ public class imgUpdateService implements CommandAction{
 		request.setCharacterEncoding("UTF-8");
 		System.out.println("update enter");
 		
-		imgBoard_entity dto = new imgBoard_entity();
-		dto.setIdx(Integer.parseInt(request.getParameter("idx")));
-		dto.setUserid(request.getParameter("userid"));
-		dto.setContent(request.getParameter("content"));
-		System.out.println("id : " + dto.getUserid());
+		//실제 저장 경로
+		String realFolder = request.getServletContext().getRealPath("/storage");
+		MultipartRequest multi=new MultipartRequest(
+		        request, realFolder, 5*1024*1024, "UTF-8",new DefaultFileRenamePolicy());
 		
-//		imgBoard_dao boardDAO = new imgBoard_dao();
-//		int n =0;
-//		n = boardDAO.boardUpdate(dto);
-//		System.out.println("n : " + n);
-//		
-//		if(n > 0) {
-//			request.setAttribute("updateOK", n);
-//			return "boardList.do";
-//		}else {
-//			return "write/modify.jsp";
-//		}
+		
+		imgBoard_entity dto = new imgBoard_entity();
+		dto.setIdx(Integer.parseInt(multi.getParameter("idx")));
+		dto.setUserid(multi.getParameter("userid"));
+		dto.setContent(multi.getParameter("content"));
+		if(multi.getFilesystemName("imgpath") == null) {
+			System.out.println("이미지가 업따?");
+			dto.setImgPath(multi.getParameter("myimgpath"));
+		}else {
+			System.out.println("이미지가 이따");
+			dto.setImgPath(multi.getFilesystemName("imgpath"));
+		}
+		
+		
+		System.out.println("aaaaaa :"+dto.getContent()+","+dto.getImgPath()+","+dto.getIdx());
 		imgBoard_dao dao = new imgBoard_dao(); 
 		dao.boardUpdate(dto);
 		
-		return "board/boardUpdate.jsp";
+		
+		return "boardView.do?idx="+dto.getIdx();
 	}
 
 }
