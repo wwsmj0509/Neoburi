@@ -3,11 +3,14 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mybatis.BoardMapper">
-
-	<select id="getBoardList" resultType="BoardDTO">
+	
+	<select id="getBoardList" parameterType="hashmap" resultType="BoardDTO">
 		<![CDATA[
-			SELECT * FROM BOARDLIST ORDER BY IDX DESC
-		]]>
+         SELECT IDX,USERID,IMGPATH,CONTENT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME 
+         FROM (SELECT ROWNUM RN, AA.* 
+               FROM (SELECT * FROM BOARDLIST ORDER BY IDX DESC)AA)
+         WHERE RN>=#{startNum} AND RN<=#{endNum}
+ 		]]> 
 	</select>
 	
 	<insert id="boardInsert" parameterType="BoardDTO">
@@ -46,6 +49,14 @@
 			SELECT * FROM BOARDLIST WHERE USERID=#{userid}
 		]]>
 	</select>
+	
+		<!-- 총 게시물 개수 구하기 -->
+	<select id="getTotalArticle" resultType="java.lang.Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM BOARDLIST
+		]]>
+	</select>
+	
 </mapper>
 
 

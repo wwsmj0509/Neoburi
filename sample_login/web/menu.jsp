@@ -10,17 +10,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../style.css" rel="stylesheet" type="text/css">
+<!-- <link href="../style.css" rel="stylesheet" type="text/css"> -->
 <link href="style.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/b97968ecfe.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 	<div id="menu">
-		<%
-			List<id_entity> idList = (List<id_entity>) session.getAttribute("idlist");
-		login_entity loginEntity = (login_entity) session.getAttribute("logOK");
+<%
+	List<id_entity> idList = (List<id_entity>) session.getAttribute("idlist");
+	System.out.println(idList);
+	login_entity loginEntity = (login_entity) session.getAttribute("logOK");
 
 		for (int n = 0; n < idList.size(); n++) {
 			if (idList.get(n).getUserid().equals(loginEntity.getUserid())) {
@@ -28,7 +30,7 @@
 			}
 
 		}
-		%>
+%>
 
 		<c:if test="${empty logOK}">
 			<a class="a logo" href="/insta/login.jsp" >EZENSTAGRAM</a>
@@ -83,7 +85,7 @@
 			item = document.getElementsByClassName("item");
 
 			for (i = 0; i < item.length; i++) {
-				name = item[i].getElementsByClassName("name");
+				name = item[i].getElementsByClassName("itemlist_name");
 				if (name[0].innerHTML.toUpperCase().indexOf(value) > -1) {
 					item[i].style.display = "flex";
 				} else {
@@ -93,11 +95,13 @@
 		}
 
 		function showUserList() {
+			
 			var chk = $('.search_input').val();
 			console.log(chk);
 			if (chk == '') {
 				$('.itemList').css('display', 'none');
 			} else {
+				filter();
 				$('.itemList').css('display', 'block');
 			}
 

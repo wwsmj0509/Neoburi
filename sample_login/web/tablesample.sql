@@ -10,7 +10,7 @@ address varchar2(160),
 profileimg varchar2(200),
 chk varchar2(12));
 
-insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('admin','1111','어드민',' ',' ','unimg.jpg','master');
+insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('ba','1111','어드민',' ',' ','unimg.jpg','master');
 
 delete from userlist where userid='admin'
 
@@ -25,9 +25,7 @@ logtime DATE DEFAULT SYSDATE);
 
 
 create sequence board_seq increment by 1 start with 1 nocycle nocache;
-
-
-
+         
 insert into boardlist(idx,userid,imgpath,content,logtime)
 				values(board_seq.nextval,'admin','1.jpg','testupload',SYSDATE);
 insert into boardlist(idx,userid,imgpath,content,logtime)
@@ -57,10 +55,21 @@ select * from userlist ;
 select * from boardlist;
 select * from reply;
 
+
+SELECT IDX,USERID,IMGPATH,CONTENT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME 
+         FROM (SELECT ROWNUM RN, AA.* 
+               FROM (SELECT * FROM BOARDLIST ORDER BY IDX DESC)AA)
+         WHERE RN>=1 AND RN<=21
+
 SELECT USERID FROM USERLIST where userid not in ('hi') ORDER BY USERID;
 
-UPDATE boardlist SET IMGPATH= '2.jpg' WHERE idx=2;
-UPDATE boardlist SET IMGPATH= '3.jpg' WHERE idx=3;
+ SELECT IDX,USERID,IMGPATH,CONTENT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME 
+         FROM (SELECT ROWNUM RN, AA.* 
+               FROM (SELECT * FROM BOARDLIST ORDER BY IDX DESC)AA)
+         WHERE RN>=1 AND RN<=19;
+         
+UPDATE userlist SET profileimg= 'dog.jpg' WHERE userid='hi';
+
 
 SELECT USERID FROM USERLIST ORDER BY USERID;
 SELECT * FROM REPLY WHERE boardidx=3 ORDER BY IDX DESC;
