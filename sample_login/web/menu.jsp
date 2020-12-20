@@ -10,21 +10,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../style.css" rel="stylesheet" type="text/css">
+<!-- <link href="../style.css" rel="stylesheet" type="text/css"> -->
 <link href="style.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/b97968ecfe.js" crossorigin="anonymous"></script>
-
 </head>
 
 <body>
 	<div id="menu">
 <%
 	List<id_entity> idList = (List<id_entity>) session.getAttribute("idlist");
-	System.out.println(idList);
+	
 	login_entity loginEntity = (login_entity) session.getAttribute("logOK");
 
 		for (int n = 0; n < idList.size(); n++) {
+			System.out.print("id리스트값 : "+idList.get(n).getUserid()+"\t");
 			if (idList.get(n).getUserid().equals(loginEntity.getUserid())) {
 				idList.remove(n);
 			}

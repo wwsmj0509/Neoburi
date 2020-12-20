@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,35 +19,30 @@ public class imgListService implements CommandAction {
 	public String requestPro_action(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		imgBoard_dao dao = new imgBoard_dao();
 		
-		int pg = 0;
-		if(request.getParameter("pg") != null) {
+		// 이 서비스는 처음 board.jsp 한번 진입했을때만 작동됨
+		int pg = 1;
+		if(request.getParameter("pg") != null){ // 처음 진입시파라메타 값이 없다
 			pg = Integer.parseInt(request.getParameter("pg"));
-		}else {
-			pg = 1;
 		}
 		
-		System.out.println("pageSize : "+pg);
+		int total=dao.getTotalArticle();//총글수	
+		System.out.println("total : "+total);
 	
-		int pageSize = 5;					//한 페이지에 출력할 게시물 
+		int pageSize = 3;					//한 페이지에 출력할 게시물 
 		int endNum = pg*pageSize;			// 끝번호 
 		int startNum = endNum - (pageSize-1);
 		
-		Map<String, Integer> map = new HashMap<>();
+		Map<String, Integer> map = new HashMap<>(); // 페이징 처리
 		map.put("startNum", startNum);
 		map.put("endNum", endNum);
-		
 		List<imgBoard_entity> list = dao.getBoardList(map);
-		int pagelimit = list.size();
-
+		
+		System.out.println("list Size : "+list.size());
 
 		if (list != null) {
-			HttpSession s=request.getSession();
-			 
-			s.setAttribute("list", list);
-			s.setAttribute("pagelimit", pagelimit);
+			request.setAttribute("list", list); //첫번째 페이지만 리퀘스트로 띄운다
 		}
 
-		
 		return "board.jsp";
 	}
 }
