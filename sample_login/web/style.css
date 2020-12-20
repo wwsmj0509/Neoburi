@@ -1,5 +1,16 @@
 @charset "UTF-8";
 
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+
 html,body{
    
    width:100%;
@@ -7,6 +18,7 @@ html,body{
    margin: 0; 
    padding: 0;
    background-color: #FAFAFA; 
+   	animation:1.3s fadein;
 }
 
 
@@ -623,4 +635,59 @@ width: 100px;
     width: 300px;
     height: 300px;
 }
+
+/*/////////////////////////////////////////////////////////  */
+
+.user_write_preview{
+	width:300px;
+	height:300px;
+	
+	
+}
+
+
+.user_write_frame{
+	
+	width:100%;
+	height:100%;
+	display:flex;
+	flex-direction:column;
+	justify-content: center;
+	align-items: center;	
+	
+	
+}
+
+
+.user_write_form_class{
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	
+}
+.user_write_id{
+	margin-top:30px;
+	width:150px;
+	text-align: center;
+	margin-bottom:15px;
+}
+
+.user_write_img{
+		margin-bottom:15px;
+	
+}
+.user_write_bottom_div{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width:250px;
+	margin-top: 20px;
+	
+}
+
+.user_write_preview img{
+	animation:1.3s fadein;
+}
+
+
 
