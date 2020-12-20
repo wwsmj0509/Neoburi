@@ -26,7 +26,9 @@
 			<div><span>작성일 : ${imgBoard.logtime }</span></div>
 			
 			<form action="/insta/RecUpdate.do?idx=${imgBoard.idx}" method="post">
-				<input type="submit">
+				<button class="w3-button w3-black w3-round" id="rec_update">
+				<i class="fa fa-heart" style="font-size:16px"></i>
+				</button> 
 			</form>
 			
 		</div>

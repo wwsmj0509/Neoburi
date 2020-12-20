@@ -6,12 +6,12 @@
 <jsp:include page="../menu.jsp"/>
 
 <script>
-function checkBoardWrite(){
-   if(document.boardWriteForm.content.value=="") {
+function checkBoardModify(){
+   if(document.boardModifyForm.content.value=="") {
       alert("내용을 입력하세요");
   	  boardWriteForm.subject.forcus();
    }else {
-      document.boardWriteForm.submit();
+      document.boardModifyForm.submit();
    }
 }
 </script>
@@ -25,7 +25,7 @@ function checkBoardWrite(){
 %>
 
 <form name="boardModifyForm" method="post" 
-                   action="boardUpdate.do?seq=<%=seq%>">
+                   action="userBoardUpdate.do?seq=<%=seq%>">
 <h3>글수정</h3>
 <table border="1" >
 	<tr>
@@ -35,7 +35,7 @@ function checkBoardWrite(){
 	   
 	   <tr>
 			<td><b>이미지</b></td>
-			<td><input type="file" name="imagepath" size="55"></td>
+			<td><input type="file" name="imagepath" size="55" ></td>
 	   </tr>
 	   
 	   <tr>
