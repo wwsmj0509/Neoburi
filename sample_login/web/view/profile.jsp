@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ include file="../menu.jsp" %>
+<jsp:include page="/menu.jsp"/>  <!-- 젇대경로 -->
 <!-- 개인정보 수정하기 -->
 
 	<form name="uploadForm" method="post" action="/insta/myProfile.do" enctype="multipart/form-data">
