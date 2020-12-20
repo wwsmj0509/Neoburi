@@ -33,10 +33,10 @@
 	</select>
 	
 	<select id="getProfileList" resultType="BoardDTO">
-		<![CDATA[
-			SELECT * FROM BOARDLIST WHERE USERID=#{userid}
-		]]>
-	</select>
+      <![CDATA[
+         SELECT * FROM BOARDLIST WHERE USERID=#{userid} ORDER BY IDX DESC
+      ]]>
+   </select>
 	
 	<update id="getUpdateUser" parameterType="BoardDTO">
 		<![CDATA[

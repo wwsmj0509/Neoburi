@@ -10,7 +10,7 @@ address varchar2(160),
 profileimg varchar2(200),
 chk varchar2(12));
 
-insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('ba','1111','어드민',' ',' ','unimg.jpg','master');
+insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('admin','1111','어드민',' ',' ','unimg.jpg','master');
 
 delete from userlist where userid='admin'
 
@@ -97,3 +97,5 @@ insert into boardlist(idx,userid,imgpath,content,logtime)
 values(board_seq.nextval,'admin','8.jpg','testupload2',SYSDATE);
 insert into boardlist(idx,userid,imgpath,content,logtime)
 values(board_seq.nextval,'admin','9.jpg','testupload3',SYSDATE);
+
+drop table userlist;
