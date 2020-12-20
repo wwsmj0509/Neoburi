@@ -19,13 +19,12 @@ function checkBoardModify(){
 
 <%
 	imgBoard_entity entity = (imgBoard_entity)request.getAttribute("entity");
-	int seq = (Integer)request.getAttribute("seq");
 	
 	login_entity log = (login_entity)session.getAttribute("logOK");
 %>
 
 <form name="boardModifyForm" method="post" 
-                   action="userBoardUpdate.do?seq=<%=seq%>">
+                   action="userBoardUpdate.do?seq=${entity.idx}">
 <h3>글수정</h3>
 <table border="1" >
 	<tr>
@@ -35,12 +34,14 @@ function checkBoardModify(){
 	   
 	   <tr>
 			<td><b>이미지</b></td>
-			<td><input type="file" name="imagepath" size="55" ></td>
+			<td>
+			<img src="/insta/storage/${entity.imgPath}" width="300" height="300" border="0">
+			<input type="file" name="imagepath" size="55" ></td>
 	   </tr>
 	   
 	   <tr>
 	      <td>내 용</td>
-	      <td><textarea name="content" cols="47" rows="10"></textarea></td>
+	      <td><textarea name="content" cols="47" rows="10">${entity.content}</textarea></td>
 	   </tr>
 	   
 	<tr>

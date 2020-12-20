@@ -30,7 +30,6 @@ public class imgModifyService implements CommandAction{
 		System.out.println("entity : " + entity);
 		
 		request.setAttribute("entity", entity);
-		request.setAttribute("seq", seq);
 
 		return "write/modify.jsp";
 	}
