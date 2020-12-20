@@ -23,7 +23,7 @@ imgpath varchar2(80),   -- 이미지 경로
 content varchar2(200),		--글내용
 logtime DATE DEFAULT SYSDATE);
 
-
+select * from BOARDLIST;
 create sequence board_seq increment by 1 start with 1 nocycle nocache;
          
 insert into boardlist(idx,userid,imgpath,content,logtime)
