@@ -14,7 +14,7 @@
 
 <body class="login_body">
 
-<!--12월 17일 수정 -->
+
 		<%
 			String errMsg = (String)session.getAttribute("errMsg");
 			if(errMsg==null){

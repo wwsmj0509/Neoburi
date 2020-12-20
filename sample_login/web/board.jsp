@@ -4,7 +4,7 @@
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<jsp:include page="menu.jsp"/>
+<jsp:include page="/menu.jsp"/>  <!-- 젇대경로 -->
 
 <script>
 var pg = 1;
@@ -17,11 +17,14 @@ $(function(){
 $(window).scroll(function() {
    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
       ++pg;
+      alert("스크롤 끝부분 라스트 위");
        lastPost();
+       alert("스크롤 끝부분 라스트 아래");
 }
 });
 
 function lastPost(){
+	alert("lastpost");
    $.ajax({
       url : "/insta/boardAjax",      //Servlet으로 비동기 요청
       data : {pg:pg},               // 몇페이지? 
