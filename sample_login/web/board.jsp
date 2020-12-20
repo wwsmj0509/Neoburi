@@ -64,13 +64,13 @@ function lastPost(){
                 <a href='boardView.do?idx=${imgBoard.idx}' class='scrolling_board_a_tag'>
                 <img src='/insta/storage/${imgBoard.imgPath}'  class='scrolling_board_img'></a>
          </div>
-         <div>
-               <i class="far fa-heart fa-2x"></i>
-               <i class="far fa-comment fa-2x" ></i>
+         <div class="scrolling_icon_bar">
+               <i class="far fa-heart fa-2x scrooling_icon"></i>
+               <i class="far fa-comment fa-2x scrooling_icon" onclick="location.href='boardView.do?idx=${imgBoard.idx}'"></i>
          </div>
-         <div id="content">${imgBoard.content }</div>
-         <div><a href='boardView.do?idx=${imgBoard.idx}'>댓글 달기</a></div>
-         <div><span id="logtime">작성일 : ${imgBoard.logtime }</span></div>
+         <div class="scrolling_content">${imgBoard.content }</div>
+         <div class="scrolling_logtime"><span id="logtime">작성일 : ${imgBoard.logtime }</span></div>
+         
          </div>
 
       </c:forEach>

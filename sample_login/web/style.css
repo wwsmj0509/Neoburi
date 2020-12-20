@@ -536,6 +536,51 @@ opacity:0.6;
    height:610px;
 }
 
+.scrolling_icon_bar{
+	
+	   width:100%;
+	   height:40px;
+		display: flex;
+		justify-content: flex-end;
+}
+.scrooling_icon{
+	margin-top:10px;
+	margin-right:15px;
+	cursor:pointer;
+	transition: all ease 0.4s;
+}
+.scrooling_icon:hover{
+	opacity:0.5;
+	transform: rotate(-45deg);
+}
+
+
+.scrolling_content{
+	
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-size:19px;
+	margin-top:15px;
+	margin-bottom:15px;
+	position: relative;
+	left:10px;
+	color:#363636;
+	
+}
+
+
+.scrolling_logtime{
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-size:12px;
+	display: flex;
+	justify-content: flex-end;
+	padding-right:20px;
+	margin-bottom:15px;
+	margin-top:15px;
+}
+
+
+
+
 
 /* ----------------------------------------------------- */
 /* profile jsp   */
