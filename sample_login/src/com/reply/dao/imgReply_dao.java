@@ -60,6 +60,45 @@ public class imgReply_dao {
 		return n;
 	}
 
+	public int replyDelete(imgReply_entity entity) {
+		SqlSession session=factory.openSession();
+		int n = 0;
+		
+		try {
+			n = session.delete("mybatis.ReplyMapper.getDeleteReply",entity);
+			if(n > 0) {
+				session.commit();
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			session.rollback();
+		}finally {
+			session.close();
+		}
+		System.out.println(" Reply Write OK");
+		return n;
+	}
+
+	public int replyUpdate(imgReply_entity entity) {
+		
+		SqlSession session=factory.openSession();
+		int n = 0;
+		
+		try {
+			n = session.update("mybatis.ReplyMapper.getUpdateReply",entity);
+			if(n > 0) {
+				session.commit();
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			session.rollback();
+		}finally {
+			session.close();
+		}
+		return n;
+	}
+
+
 
 
 

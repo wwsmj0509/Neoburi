@@ -14,7 +14,7 @@ public class imgViewService implements CommandAction {
 
 	@Override
 	public String requestPro_action(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		
+		System.out.println("view들어왔따");
 		int idx = Integer.parseInt(request.getParameter("idx"));
 		
 		System.out.println(idx);

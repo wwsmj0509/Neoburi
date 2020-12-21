@@ -30,7 +30,6 @@
 					<input type="password" placeholder="PASSWORD" name="input_pwd"  id="input_id_pwd" autocomplete=off class="login_input">
 					<input type="submit" value="login" class="login_submit_btn">
 					<input type="button" class="login_signIn_btn" onclick="location.href='/insta/enterJoin.do'" value="회원가입">
-					
 		</form>
 		
 		

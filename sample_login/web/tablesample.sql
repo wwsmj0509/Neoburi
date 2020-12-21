@@ -56,6 +56,7 @@ select * from boardlist;
 select * from reply;
 
 
+
 SELECT IDX,USERID,IMGPATH,CONTENT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME 
          FROM (SELECT ROWNUM RN, AA.* 
                FROM (SELECT * FROM BOARDLIST ORDER BY IDX DESC)AA)

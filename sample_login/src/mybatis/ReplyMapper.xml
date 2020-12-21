@@ -17,6 +17,19 @@
 		]]>
 	</insert>
 	
+	<delete id="getDeleteReply" parameterType="java.util.ArrayList">
+		<![CDATA[
+ 			DELETE FROM REPLY WHERE BOARDIDX=#{boardidx} AND IDX=#{idx}
+		]]>
+	</delete>
+	
+	<delete id="getUpdateReply" parameterType="ReplyDTO">
+		<![CDATA[
+ 			UPDATE REPLY SET CONTENT= #{content} WHERE BOARDIDX=#{boardidx} AND IDX=#{idx}
+		]]>
+	</delete>
+	
+	
 </mapper>
 
 

@@ -34,7 +34,7 @@ function pwdchk(){
 				<input type="button" value="확인" onclick="pwdchk()">
 			</td>
 			<td>
-				<input type="button" value="뒤로" onclick="history.back() ">
+				<input type="button" value="취소" onclick="history.back() ">
 			</td>
 		</tr>
 
