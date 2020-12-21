@@ -16,7 +16,7 @@
 	<insert id="boardInsert" parameterType="BoardDTO">
 		<![CDATA[
 			INSERT INTO BOARDLIST
-			VALUES(BOARD_SEQ.NEXTVAL,#{userid},#{userProgileImg},#{imgPath},#{content},SYSDATE)
+			VALUES(BOARD_SEQ.NEXTVAL,#{userid},#{writeuserimg},#{imgPath},#{content},SYSDATE)
 		]]>
 	</insert>
 	
@@ -47,6 +47,11 @@
 	<update id="getUpdateUser" parameterType="BoardDTO">
 		<![CDATA[
 			UPDATE BOARDLIST SET CONTENT=#{content}, IMGPATH=#{imgPath} WHERE IDX=#{idx}
+		]]>
+	</update>
+	<update id="getBoardChangeWriteProtile" parameterType="BoardDTO">
+		<![CDATA[
+			UPDATE BOARDLIST SET WRITEUSERIMG=#{profileimg} WHERE USERID=#{userid}
 		]]>
 	</update>
 	
