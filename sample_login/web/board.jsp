@@ -69,15 +69,15 @@ function lastPost(){
 	          <span id="userid">
 	          <c:choose>
 	          	<c:when test='${logOK.userid eq imgBoard.userid}'>
-          		<a href='profileList.do?id=${imgBoard.userid}' class=''>
-		      		<span><img name="profileimg" src="/insta/profile_img/${imgBoard.writeuserimg}" width="40px"></span>
-			        <span>${imgBoard.userid}</span>
+          		<a href='profileList.do?id=${imgBoard.userid}' class="test">
+		      		<img name="profileimg" src="/insta/profile_img/${imgBoard.writeuserimg}" class='scrolling_writerImg' >
+			        <span class='scrolling_writerId'>${imgBoard.userid}</span>
 		        </a>
 	          	</c:when>
 	          	<c:when test='${logOK.userid ne imgBoard.userid}'>
-          		<a href='idprofile.do?id=${imgBoard.userid}' class=''>
-		      		<span><img name="profileimg" src="/insta/profile_img/${imgBoard.writeuserimg}" width="40px"></span>
-			        <span>${imgBoard.userid}</span>
+          		<a href='idprofile.do?id=${imgBoard.userid}'>
+		      		<img name="profileimg" src="/insta/profile_img/${imgBoard.writeuserimg}"  class='scrolling_writerImg'>
+			        <span class='scrolling_writerId'>${imgBoard.userid}</span>
 		        </a>
 	          	</c:when>
 		        </c:choose>

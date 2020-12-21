@@ -579,6 +579,37 @@ opacity:0.6;
 }
 
 
+	
+
+
+.scrolling_writerImg{
+	
+	width:40px;
+	height:40px;
+	border-radius: 100%;
+	position: relative;
+	left:14px;
+	top:3px;
+	border: 1.4px solid #DC3171;
+	
+}
+
+
+.scrolling_writerId{
+	
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-size:22px;
+	position: relative;
+	left:25px;
+	height:40px;
+	top:-10px;
+	rgba(var(--f75,38,38,38),1);
+	font-weight: 600;
+
+}
+
+
+
 
 
 
@@ -733,6 +764,47 @@ width: 100px;
 .user_write_preview img{
 	animation:1.3s fadein;
 }
+
+
+
+/* /////////////////////////////////////// */
+
+.user_modify_frame{
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	
+}
+
+
+.modify_img{
+	border-radius:10%;
+
+    }
+
+.user_modify_img_btn{
+	
+	margin-top:20px;
+}
+
+.user_modify_content{
+	
+	margin-top:20px;
+}
+
+.user_modify_btn_bar{
+	width:200px;
+	display:flex;
+	justify-content:space-around;
+	margin-top:20px;
+}
+
+
+
+
+
 
 
 
