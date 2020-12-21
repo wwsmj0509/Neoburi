@@ -10,6 +10,8 @@
 	<typeAlias type="com.login.entity.id_entity" alias="idDTO" />
 	<typeAlias type="com.board.entity.imgBoard_entity" alias="BoardDTO" />
 	<typeAlias type="com.reply.entity.imgReply_entity" alias="ReplyDTO" />
+	<typeAlias type="com.board.entity.rec_entity" alias="recDTO" />
+	
 		
 	</typeAliases>
 	<environments default="development">

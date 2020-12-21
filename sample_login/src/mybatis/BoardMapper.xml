@@ -68,6 +68,27 @@
 		]]>
 	</select>
 	
+	
+	
+	
+ 	<select id="rec_check" parameterType="recDTO" resultType="java.lang.Integer">
+		<![CDATA[
+		SELECT COUNT(*) FROM REC WHERE userid=#{userid} AND idx=#{idx}
+		]]>
+	</select>
+	
+	<insert id="rec_update" parameterType="recDTO">
+		<![CDATA[
+		INSERT INTO REC VALUES(#{userid}, #{idx})
+		]]>
+	</insert>
+	
+	<delete id="rec_delete" parameterType="recDTO">
+		<![CDATA[
+		DELETE FROM REC WHERE userid = #{userid} AND idx = #{idx}
+		]]>
+	</delete> 
+	
 </mapper>
 
 

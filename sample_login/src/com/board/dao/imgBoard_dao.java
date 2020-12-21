@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.board.entity.imgBoard_entity;
+import com.board.entity.rec_entity;
 import com.login.entity.login_entity;
 
 
@@ -162,5 +163,59 @@ public class imgBoard_dao {
 			session.close();
 		}
 	}
+	
+	
+	public void recUpdate(rec_entity rec_entity) {
+		SqlSession session = factory.openSession();
+		int n = 0;
+		try {
+			n = session.insert("mybatis.BoardMapper.rec_update", rec_entity);
+			if (n > 0)
+				session.commit();
+		} catch (Exception e) {
+			System.out.println("recUpdate : " + e);
+			e.printStackTrace();
+			session.rollback();
+		} finally {
+			session.close();
+		}
+	}
+
+	public void recDelete(rec_entity rec_entity) {
+		SqlSession session = factory.openSession();
+		int n = 0;
+		try {
+			n = session.delete("mybatis.BoardMapper.rec_delete", rec_entity);
+			if (n > 0)
+				session.commit();
+		} catch (Exception e) {
+			System.out.println("recUpdate : " + e);
+			e.printStackTrace();
+			session.rollback();
+		} finally {
+			session.close();
+		}
+
+	}
+
+	public int recCheck(rec_entity rec_entity) {
+		SqlSession session = factory.openSession();
+		int result = 0;
+
+		try {
+			result = (Integer) session.selectOne("mybatis.BoardMapper.rec_check", rec_entity);
+		} catch (Exception e) {
+			System.out.println("recCheck : " + e);
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
 
 }

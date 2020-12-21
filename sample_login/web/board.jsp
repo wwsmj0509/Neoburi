@@ -1,3 +1,7 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.login.entity.login_entity"%>
+<%@page import="com.board.entity.rec_entity"%>
+<%@page import="com.board.dao.imgBoard_dao"%>
 <%@page import="java.util.List"%>
 <%@page import="com.board.entity.imgBoard_entity"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -61,7 +65,16 @@ function lastPost(){
 
 </script>
 
+<%login_entity logEntity = (login_entity)session.getAttribute("logOK");
+	System.out.println("보드 log id -> "+logEntity.getUserid());
+%>
+
+<input type="text" style="display:none;" id="hidden_logId" value="<%=logEntity.getUserid()%>">
 <c:if test="${!empty list }">
+<%--  	<c:set var="mylist" value="${list}" /> --%>
+ 	
+
+
    <div id="appendList">
    <c:forEach items="${list}" var="imgBoard" >
       <div class="scrolling">
@@ -89,7 +102,15 @@ function lastPost(){
                 <img src='/insta/storage/${imgBoard.imgPath}'  class='scrolling_board_img'></a>
          </div>
          <div class="scrolling_icon_bar">
-               <i class="far fa-heart fa-2x scrooling_icon"></i>
+         			
+         		<%
+         		
+         		
+         		%>	
+         			
+           		<i class="far fa-heart fa-2x scrooling_icon_${imgBoard.idx}"onclick="likeCheck(${imgBoard.idx})"></i> 
+               
+               
                <i class="far fa-comment fa-2x scrooling_icon" onclick="location.href='boardView.do?idx=${imgBoard.idx}'"></i>
          </div>
          <div class="scrolling_content">${imgBoard.content }</div>
@@ -100,6 +121,50 @@ function lastPost(){
       </c:forEach>
       </div>
    </c:if>
+   
+   <script>
+   
+  function likeCheck(idxValue){
+	   
+	  var className='.scrooling_icon_';
+			className=className+idxValue;
+    			
+               var  userid= $("#hidden_logId").val();
+               var idx = idxValue;
+				
+               console.log(className);
+               
+       $.ajax({
+           url : "/insta/RecUpdateService_url",    
+           data : {userid:userid , idx:idx},               
+           type : "get",
+           dataType: "json",
+           success : function(){ 
+               alert("no,,");
+           },
+           error : function(){ 
+        	   
+        	   console.log(">>" + className)
+        	   
+        	   if($(className).hasClass("fas") === true) {
+
+            	   $(className).attr('class','far fa-heart fa-2x scrooling_icon_'+idxValue);      
+					console.log("좋아요 취소")
+        		}
+        	   else if($(className).hasClass("far") === true){
+            	   $(className).attr('class','fas fa-heart fa-2x scrooling_icon_'+idxValue);      	   
+					console.log("좋아요 등록")
+        	   }
+
+        	   
+           }
+       });
+   };
+   
+   
+   </script>
+   
+   
    
 </body>
 </html>

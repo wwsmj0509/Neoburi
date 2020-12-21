@@ -27,6 +27,8 @@ content varchar2(200),		--글내용
 logtime DATE DEFAULT SYSDATE);
 
 select * from BOARDLIST;
+
+
 create sequence board_seq increment by 1 start with 1 nocycle nocache;
          
 insert into boardlist(idx,userid,writeuserimg,imgpath,content,logtime)
@@ -112,19 +114,23 @@ insert into boardlist(idx,userid,imgpath,content,logtime)
 values(board_seq.nextval,'admin','9.jpg','testupload3',SYSDATE);
 
 drop table userlist;
+
 drop table boardlist purge;
 drop sequence board_seq;
 
-
+drop table reply;
+drop sequence reply_seq;
 
 create table rec(
 userid varchar2(40),
 idx number(6) 
 )
 
+		SELECT COUNT(*) FROM REC WHERE userid='aa' AND idx=9
 
 
+select * from rec
 
 
-
+drop table rec
 
