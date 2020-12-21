@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.board.dao.imgBoard_dao;
 import com.board.entity.imgBoard_entity;
+import com.login.dao.login_dao;
+import com.login.entity.login_entity;
 
 import controller.CommandAction;
 
@@ -22,8 +24,12 @@ public class profileListService implements CommandAction {
 		imgBoard_dao dao = new imgBoard_dao();
 		List<imgBoard_entity> polist = dao.getProfileList(userid);
 		
+		login_dao logDao = new login_dao();
+		String chk = logDao.getFindUserChk(userid);
+		
+		
 		request.setAttribute("polist", polist);
 		
-		return "/view/profile.jsp";
+			return "/view/profile.jsp";
 	}
 }

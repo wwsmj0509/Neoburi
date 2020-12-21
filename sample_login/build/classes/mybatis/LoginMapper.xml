@@ -54,4 +54,10 @@
 			SELECT PROFILEIMG FROM USERLIST WHERE USERID=#{userid}
 		]]>
 	</select>
+	
+	<select id="getFindUserChk" parameterType="java.lang.String" resultType="java.lang.String">
+	<![CDATA[
+		SELECT CHK FROM USERLIST WHERE USERID=#{userid}
+	]]>
+	</select>
 </mapper>

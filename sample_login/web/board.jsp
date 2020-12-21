@@ -32,10 +32,15 @@ function lastPost(){
          for (var i = 0; i < listObj.length; i++) {
          var append_div = "";
             append_div += "<div class='scrolling'>";
-            append_div += "<div class='scrolling_profile_bar'><span>";
-           	append_div += "<a href='profileList.do?id="+listObj[i].boardUserid+"' class=''>";
+            append_div += "<div class='scrolling_profile_bar'><span id='userid'>";
+            append_div += "<c:if test='${logOK.userid eq imgBoard.userid}'>";
+          	append_div += "<a href='profileList.do?id="+listObj[i].boardUserid+"' class=''>";
            	append_div += "<span><img name='profileimg' src='/insta/profile_img/"+listObj[i].boardWriteuserimg+"' width='40px'></span>";
-           	append_div += "<span>"+listObj[i].boardUserid+"</span></a>";
+           	append_div += "<span>"+listObj[i].boardUserid+"</span></a></c:if>";
+        	append_div += "<c:if test='${logOK.userid ne imgBoard.userid}'>";
+          	append_div += "<a href='idprofile.do?id="+listObj[i].boardUserid+"' class=''>";
+           	append_div += "<span><img name='profileimg' src='/insta/profile_img/"+listObj[i].boardWriteuserimg+"' width='40px'></span>";
+           	append_div += "<span>"+listObj[i].boardUserid+"</span></a></c:if>";
             append_div += "</span></div>"; 
             append_div += "<div  class='scrolling_board_frame'><a href='boardView.do?idx="+listObj[i].boardIdx+"' class='scrolling_board_a_tag'>";
             append_div += "<img src='/insta/storage/"+listObj[i].boardImgPath+"'  class='scrolling_board_img'></a>";
@@ -62,10 +67,20 @@ function lastPost(){
       <div class="scrolling">
           <div class="scrolling_profile_bar">
 	          <span id="userid">
+	          <c:choose>
+	          	<c:when test='${logOK.userid eq imgBoard.userid}'>
           		<a href='profileList.do?id=${imgBoard.userid}' class=''>
 		      		<span><img name="profileimg" src="/insta/profile_img/${imgBoard.writeuserimg}" width="40px"></span>
 			        <span>${imgBoard.userid}</span>
 		        </a>
+	          	</c:when>
+	          	<c:when test='${logOK.userid ne imgBoard.userid}'>
+          		<a href='idprofile.do?id=${imgBoard.userid}' class=''>
+		      		<span><img name="profileimg" src="/insta/profile_img/${imgBoard.writeuserimg}" width="40px"></span>
+			        <span>${imgBoard.userid}</span>
+		        </a>
+	          	</c:when>
+		        </c:choose>
 	          </span>
           </div>
           

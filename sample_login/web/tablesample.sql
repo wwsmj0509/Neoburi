@@ -11,7 +11,8 @@ profileimg varchar2(200),
 chk varchar2(12));
 
 insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('admin','1111','어드민',' ',' ','unimg.jpg','master');
-insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('pro','1111','장사꾼',' ',' ','unimg.jpg','master');
+insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('hi','1111','일반인',' ',' ','unimg.jpg','user');
+insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('pro','1111','장사꾼',' ',' ','nuimg.jpg','product');
 
 delete from userlist where userid='admin'
 
