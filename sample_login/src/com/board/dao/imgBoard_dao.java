@@ -54,6 +54,7 @@ public class imgBoard_dao {
 	public imgBoard_entity getBoard(int seq) {
 		SqlSession session = factory.openSession();
 		imgBoard_entity entity = session.selectOne("mybatis.BoardMapper.getBoard",seq);
+		System.out.println("entity : : :" + entity);
 		session.close();
 		return entity;
 	}
@@ -63,8 +64,10 @@ public class imgBoard_dao {
 	public void boardDelete(int seq) {
 		SqlSession session = factory.openSession();
 		int n=0;
+		System.out.println("delete mon in");
 		try{
 			n=session.delete("mybatis.BoardMapper.boardDelete",seq);
+			System.out.println("n::::"+n);
 			if(n > 0)
 				session.commit();
 			}catch(Exception e) {
@@ -94,26 +97,28 @@ public class imgBoard_dao {
 	}
 	
 	//Update -----------------------------------------------------------------
-	public int boardUpdate(imgBoard_entity dto) {
+	public void boardUpdate(imgBoard_entity dto) {
 		SqlSession session=factory.openSession();
-		int n = 0;
-		
+		int n=0;
+		System.out.println("update dao in");
 		try {
-			n = session.insert("mybatis.BoardMapper.getUpdateUser",dto);
-			if(n > 0) {
+			System.out.println("try in");
+			n = session.update("mybatis.BoardMapper.getUpdateUser",dto);
+			System.out.println("try out");
+			if(n>0) {
 				session.commit();
 			}
 		}catch(Exception e) {
+			System.out.println("catch");
 			e.printStackTrace();
 			session.rollback();
 		}finally {
 			session.close();
 		}
-		System.out.println(" User Update OK");
-		return n;
+
 	}
 
-
+	//-----------------------------------------------------------------
 	public List<imgBoard_entity> getProfileList(String userid) {
 		SqlSession session = factory.openSession();
 		List<imgBoard_entity> polist = session.selectList("mybatis.BoardMapper.getProfileList",userid);
@@ -122,7 +127,7 @@ public class imgBoard_dao {
 		return polist;
 	}
 
-
+	//-----------------------------------------------------------------
 	public List<imgBoard_entity> getClickidList(String userid) {
 		SqlSession session = factory.openSession();
 		List<imgBoard_entity> list = session.selectList("mybatis.BoardMapper.getidList",userid);

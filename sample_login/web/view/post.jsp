@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:include page="/menu.jsp"/>  <!-- 젇대경로 -->
+<jsp:include page="../menu.jsp"/>
 
 <c:if test="${!empty boardView}">
 
@@ -14,7 +14,7 @@
 			<span>프로필사진</span>
 			<span>${boardView.userid }</span>
 			<c:if test="${logOK.userid == boardView.userid }" > <!--작성자 확인 -->
-			<span><a href="">수정</a></span>
+			<span><a href="boardModify.do?idx=${boardView.idx}">수정</a></span>
 			<span><a href="boardDelete.do?idx=${boardView.idx}">삭제</a></span>
 			</c:if>
 		</div>

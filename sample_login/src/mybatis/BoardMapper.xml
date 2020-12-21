@@ -20,9 +20,15 @@
 		]]>
 	</insert>
 	
+	<select id="getBoard" parameterType="java.lang.Integer" resultType="BoardDTO">
+		<![CDATA[
+			SELECT * FROM BOARDLIST WHERE IDX=#{seq}
+		]]>
+	</select>
+	
 	<delete id="boardDelete" parameterType="java.lang.Integer">
 		<![CDATA[
-			DELETE BOARDLIST WHERE SEQ=#{seq}
+			DELETE BOARDLIST WHERE IDX=#{seq}
 		]]>
 	</delete>
 	
@@ -40,7 +46,7 @@
 	
 	<update id="getUpdateUser" parameterType="BoardDTO">
 		<![CDATA[
-			UPDATE BOARDLIST SET TITLE=#{title}, CONTENT=#{content} WHERE IDX=#{idx}
+			UPDATE BOARDLIST SET CONTENT=#{content}, IMGPATH=#{imgPath} WHERE IDX=#{idx}
 		]]>
 	</update>
 	

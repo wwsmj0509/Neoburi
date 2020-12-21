@@ -2,14 +2,11 @@ package com.board.entity;
 
 public class imgBoard_entity {
 	
-	
 	private int idx;
 	private String userid;
 	private String content;
 	private String imgPath;
 	private String logtime;
-	
-	
 	
 	public String getImgPath() {
 		return imgPath;

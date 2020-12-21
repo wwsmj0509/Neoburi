@@ -36,8 +36,6 @@ public class imgInsertService implements CommandAction{
 		login_entity logentity = (login_entity)session.getAttribute("logOK");
 		
 		imgBoard_entity entity = new imgBoard_entity();
-		
-		
 		entity.setUserid(logentity.getUserid());
 		entity.setContent(multi.getParameter("content"));
 		entity.setImgPath(multi.getFilesystemName("imgpath"));
