@@ -114,3 +114,17 @@ values(board_seq.nextval,'admin','9.jpg','testupload3',SYSDATE);
 drop table userlist;
 drop table boardlist purge;
 drop sequence board_seq;
+
+
+
+create table rec(
+userid varchar2(40),
+idx number(6) 
+)
+
+
+
+
+
+
+

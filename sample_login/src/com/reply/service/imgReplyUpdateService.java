@@ -18,9 +18,9 @@ public class imgReplyUpdateService implements CommandAction{
 		request.setCharacterEncoding("UTF-8");
 		System.out.println("reply update enter");
 		
-		String content = request.getParameter("reply_update");
-		int board_idx = Integer.parseInt(request.getParameter("board_idx"));
-		int reply_idx = Integer.parseInt(request.getParameter("reply_idx"));
+		String content = request.getParameter("content");
+		int board_idx = Integer.parseInt(request.getParameter("idx"));
+		int reply_idx = Integer.parseInt(request.getParameter("replyidx"));
 		
 		imgReply_dao dao = new imgReply_dao();
 		imgReply_entity entity = new imgReply_entity();

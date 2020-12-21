@@ -4,6 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../menu.jsp"/>
 
+
+<%int count = 0; %>
+
 <c:if test="${!empty boardView}">
 
 	<div>
@@ -32,15 +35,21 @@
 				<a href="/insta/idprofile.do?id=${replylist.writeid}"><span>${replylist.writeid}</span></a>
 			</c:if>
 				
-				<span>${replylist.content}</span>
+				<span class="post_reply_content_<%=count%>">${replylist.content}</span>
 				<span>${replylist.logtime}</span>
 			<c:if test="${logOK.userid == replylist.writeid }">
-				<input type="submit" value="수정" onclick="javascript: form.action='/insta/view/reply_update.jsp?idx=${boardView.idx}&&replyidx=${replylist.idx}&&content=${replylist.content}';"/>
-    			<input type="submit" value="삭제" onclick="javascript: form.action='/insta/replyDelete.do?idx=${boardView.idx}&&replyidx=${replylist.idx}';"/>
+			    <input type="submit" value="삭제" onclick="javascript: form.action='/insta/replyDelete.do?idx=${boardView.idx}&&replyidx=${replylist.idx}';"/>
+				<input type="button" value="수정" onclick="modifyChk(<%=count%>);" class="update_btn"/>   
+				<div style="display:none;" class="post_reply_modify_bar_<%=count%>">
+				<input type="text"  value="" name="content" class="post_reply_modify_content_<%=count %>" />
+				<input type="submit" value="확인" onclick="javascript: form.action='/insta/replyUpdate.do?idx=${boardView.idx}&&replyidx=${replylist.idx}';"/>
+				<input type="button" value="닫기" onclick="close_bar(<%=count%>)">
+				</div>
 			</c:if>
+			
 		</form>	
 		</div>
-		
+		<%count++; %>
 	</c:forEach>
 </c:if>
 		<div>
@@ -54,6 +63,51 @@
 	</div>
 
 </c:if>
+ 
+<script>
+
+
+
+function modifyChk(count){
+	
+	var show_submit_btn = '.post_reply_modify_bar_';
+	show_submit_btn=show_submit_btn+count;
+	
+	$(show_submit_btn).css('display','inline');
+	
+	var str = '.post_reply_content_';
+	str = str + count;
+	var reply_content= $(str).text();
+	
+	
+	
+	
+	var str2 = ".post_reply_modify_content_";
+	str2=str2+count;
+	
+	$(str2).val(reply_content)
+	
+	
+}
+
+function close_bar(count){
+	
+	var show_submit_btn = '.post_reply_modify_bar_';
+	show_submit_btn=show_submit_btn+count;
+	
+	$(show_submit_btn).css('display','none');
+
+}
+
+
+
+
+</script>
+
+
+
+ 
+ 
  
 </body>
 </html>

@@ -39,11 +39,22 @@ public class imgListService implements CommandAction {
 		map.put("endNum", endNum);
 		List<imgBoard_entity> list = dao.getBoardList(map);
 		
-		System.out.println("list Size : "+list.size());
-		System.out.println("list Write User Img : "+list.get(0).getWriteuserimg());
+		
+		
+		
+		
+		
+		
+		/*
+		 * System.out.println("list Size : "+list.size());
+		 * System.out.println("list Write User Img : "+list.get(0).getWriteuserimg());
+		 */
 
 		if (list != null) {
 			request.setAttribute("list", list); //첫번째 페이지만 리퀘스트로 띄운다
+			
+			
+			
 		}
 
 		return "board.jsp";
