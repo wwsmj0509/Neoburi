@@ -24,10 +24,6 @@ public class profileListService implements CommandAction {
 		imgBoard_dao dao = new imgBoard_dao();
 		List<imgBoard_entity> polist = dao.getProfileList(userid);
 		
-		login_dao logDao = new login_dao();
-		String chk = logDao.getFindUserChk(userid);
-		
-		
 		request.setAttribute("polist", polist);
 		
 			return "/view/profile.jsp";

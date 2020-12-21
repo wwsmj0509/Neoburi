@@ -135,13 +135,7 @@ public class login_dao {
 			return img;
 		}
 
-		public String getFindUserChk(String userid) {
-			SqlSession session = factory.openSession();
-			String chk = session.selectOne("mybatis.LoginMapper.getFindUserChk", userid);
 
-			session.close();
-			return chk;
-		}
 
 		
 
