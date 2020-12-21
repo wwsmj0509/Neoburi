@@ -143,4 +143,24 @@ public class imgBoard_dao {
 		return n;
 	}
 
+	public void getBoardChangeWriteProtile(login_entity entity) {
+		SqlSession session=factory.openSession();
+		int n=0;
+		System.out.println("update profile img dao in");
+		try {
+			System.out.println("try in");
+			n = session.update("mybatis.BoardMapper.getBoardChangeWriteProtile",entity);
+			System.out.println("try out");
+			if(n>0) {
+				session.commit();
+			}
+		}catch(Exception e) {
+			System.out.println("catch");
+			e.printStackTrace();
+			session.rollback();
+		}finally {
+			session.close();
+		}
+	}
+
 }

@@ -20,6 +20,7 @@
 			<div class="edit_bar">
 				<input type="submit" value="프로필 변경 확인" id="id_change_btn"/>
 				<!-- <input type="button" onClick="location.href='/insta/login/chk_pwd.jsp'" value="정보 변경"/> -->
+				
 				<i class="fas fa-user-edit fa-2x" onClick="location.href='/insta/login/chk_pwd.jsp'"></i>
 			</div>
 		</div>

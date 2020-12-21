@@ -6,7 +6,7 @@
 	
 	<select id="getBoardList" parameterType="hashmap" resultType="BoardDTO">
 		<![CDATA[
-         SELECT IDX,USERID,IMGPATH,CONTENT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME 
+         SELECT IDX,USERID,WRITEUSERIMG,IMGPATH,CONTENT,TO_CHAR(LOGTIME,'YYYY.MM.DD')AS LOGTIME 
          FROM (SELECT ROWNUM RN, AA.* 
                FROM (SELECT * FROM BOARDLIST ORDER BY IDX DESC)AA)
          WHERE RN>=#{startNum} AND RN<=#{endNum}
@@ -16,7 +16,7 @@
 	<insert id="boardInsert" parameterType="BoardDTO">
 		<![CDATA[
 			INSERT INTO BOARDLIST
-			VALUES(BOARD_SEQ.NEXTVAL,#{userid},#{imgPath},#{content},SYSDATE)
+			VALUES(BOARD_SEQ.NEXTVAL,#{userid},#{writeuserimg},#{imgPath},#{content},SYSDATE)
 		]]>
 	</insert>
 	
@@ -47,6 +47,11 @@
 	<update id="getUpdateUser" parameterType="BoardDTO">
 		<![CDATA[
 			UPDATE BOARDLIST SET CONTENT=#{content}, IMGPATH=#{imgPath} WHERE IDX=#{idx}
+		]]>
+	</update>
+	<update id="getBoardChangeWriteProtile" parameterType="BoardDTO">
+		<![CDATA[
+			UPDATE BOARDLIST SET WRITEUSERIMG=#{profileimg} WHERE USERID=#{userid}
 		]]>
 	</update>
 	

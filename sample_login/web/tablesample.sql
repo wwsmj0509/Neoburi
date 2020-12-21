@@ -11,6 +11,8 @@ profileimg varchar2(200),
 chk varchar2(12));
 
 insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('admin','1111','어드민',' ',' ','unimg.jpg','master');
+insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('hi','1111','일반인',' ',' ','unimg.jpg','user');
+insert into userlist(userid,pwd,name,email,address,profileimg,chk) values('pro','1111','장사꾼',' ',' ','nuimg.jpg','product');
 
 delete from userlist where userid='admin'
 
@@ -19,6 +21,7 @@ delete from userlist where userid='admin'
 create table boardlist(
 idx number(6) primary key,		--글번호
 userid varchar2(15) not null,	--유져이름
+writeuserimg varchar2(80),		--작성자 프로필 이미지
 imgpath varchar2(80),   -- 이미지 경로
 content varchar2(200),		--글내용
 logtime DATE DEFAULT SYSDATE);
@@ -26,13 +29,22 @@ logtime DATE DEFAULT SYSDATE);
 select * from BOARDLIST;
 create sequence board_seq increment by 1 start with 1 nocycle nocache;
          
-insert into boardlist(idx,userid,imgpath,content,logtime)
-				values(board_seq.nextval,'admin','1.jpg','testupload',SYSDATE);
-insert into boardlist(idx,userid,imgpath,content,logtime)
-values(board_seq.nextval,'admin','2.jpg','testupload2',SYSDATE);
-insert into boardlist(idx,userid,imgpath,content,logtime)
-values(board_seq.nextval,'admin','3.jpg','testupload3',SYSDATE);
+insert into boardlist(idx,userid,writeuserimg,imgpath,content,logtime)
+				values(board_seq.nextval,'admin','unimg.jpg','1.jpg','testupload',SYSDATE);
+insert into boardlist(idx,userid,writeuserimg,imgpath,content,logtime)
+values(board_seq.nextval,'admin','unimg.jpg','7.jpg','testupload2',SYSDATE);
+insert into boardlist(idx,userid,writeuserimg,imgpath,content,logtime)
+values(board_seq.nextval,'hi','unimg.jpg','8.jpg','testupload3',SYSDATE);
+insert into boardlist(idx,userid,writeuserimg,imgpath,content,logtime)
+				values(board_seq.nextval,'admin','unimg.jpg','9.jpg','testupload',SYSDATE);
+insert into boardlist(idx,userid,writeuserimg,imgpath,content,logtime)
+values(board_seq.nextval,'admin','unimg.jpg','13.jpg','testupload21',SYSDATE);
+insert into boardlist(idx,userid,writeuserimg,imgpath,content,logtime)
+values(board_seq.nextval,'hi','unimg.jpg','12.jpg','testupload32',SYSDATE);
 
+
+alter table boardList add writeuserimg varchar2(80);
+update boardList set writeuserimg='unimg.jpg' where idx=17;
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -100,5 +112,5 @@ insert into boardlist(idx,userid,imgpath,content,logtime)
 values(board_seq.nextval,'admin','9.jpg','testupload3',SYSDATE);
 
 drop table userlist;
-drop table boardlist;
+drop table boardlist purge;
 drop sequence board_seq;

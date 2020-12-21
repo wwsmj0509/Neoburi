@@ -11,7 +11,7 @@
 	</div>
 	<div>
 		<div>
-			<span>프로필사진</span>
+			<span><img name="profileimg" src="/insta/profile_img/${boardView.writeuserimg}" width="40px"></span>
 			<span>${boardView.userid }</span>
 			<c:if test="${logOK.userid == boardView.userid }" > <!--작성자 확인 -->
 			<span><a href="boardModify.do?idx=${boardView.idx}">수정</a></span>

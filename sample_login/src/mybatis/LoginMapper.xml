@@ -54,4 +54,6 @@
 			SELECT PROFILEIMG FROM USERLIST WHERE USERID=#{userid}
 		]]>
 	</select>
+	
+
 </mapper>

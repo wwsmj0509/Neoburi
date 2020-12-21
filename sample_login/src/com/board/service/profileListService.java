@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.board.dao.imgBoard_dao;
 import com.board.entity.imgBoard_entity;
+import com.login.dao.login_dao;
+import com.login.entity.login_entity;
 
 import controller.CommandAction;
 
@@ -24,6 +26,6 @@ public class profileListService implements CommandAction {
 		
 		request.setAttribute("polist", polist);
 		
-		return "/view/profile.jsp";
+			return "/view/profile.jsp";
 	}
 }
