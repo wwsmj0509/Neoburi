@@ -37,9 +37,10 @@ public class imgUpdateService implements CommandAction{
 			System.out.println("이미지가 이따");
 			dto.setImgPath(multi.getFilesystemName("imgpath"));
 		}
+		dto.setLogtime(multi.getParameter("logtime"));
 		
 		
-		System.out.println("aaaaaa :"+dto.getContent()+","+dto.getImgPath()+","+dto.getIdx());
+		System.out.println("aaaaaa :"+dto.getContent()+","+dto.getImgPath()+","+dto.getIdx()+","+dto.getLogtime());
 		imgBoard_dao dao = new imgBoard_dao(); 
 		dao.boardUpdate(dto);
 		
