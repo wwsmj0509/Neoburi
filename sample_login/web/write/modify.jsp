@@ -38,7 +38,9 @@ function setThumbnail(event) {
 <table border="1" >
 	<tr>
 	      <td>아이디</td>
-	      <td><input type="text" name="userid" size="55"  value="${logOK.userid}" readonly></td>
+	      <td><input type="text" name="userid" size="55"  value="${logOK.userid}" readonly>
+	       <input  value="${entity.logtime}"/></td>
+	     
 	   </tr>
 	   
 	   <tr>

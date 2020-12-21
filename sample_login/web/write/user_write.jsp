@@ -31,7 +31,7 @@ function setThumbnail(event) {
 	      <td>아이디</td>
 	      <td><input type="text" name="userid" size="55"  value="${logOK.userid}" readonly></td>
 	   </tr>
-	   
+
 	   <tr>
 			<td><b>이미지</b></td>
 			<td id="image_container">

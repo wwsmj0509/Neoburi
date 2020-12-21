@@ -17,6 +17,8 @@
 			<span><a href="boardModify.do?idx=${boardView.idx}">수정</a></span>
 			<span><a href="boardDelete.do?idx=${boardView.idx}">삭제</a></span>
 			</c:if>
+			<span>${boardView.logtime}</span>
+			
 		</div>
 		<div>${boardView.content }</div>
 <c:if test="${!empty Replylist}">
