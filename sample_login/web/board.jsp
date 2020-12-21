@@ -5,10 +5,11 @@
 <%@page import="java.util.List"%>
 <%@page import="com.board.entity.imgBoard_entity"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<jsp:include page="/menu.jsp"/>  <!-- 젇대경로 -->
+<jsp:include page="/menu.jsp" />
+<!-- 젇대경로 -->
 
 <script>
 var pg = 1;
@@ -65,64 +66,90 @@ function lastPost(){
 
 </script>
 
-<%login_entity logEntity = (login_entity)session.getAttribute("logOK");
-	System.out.println("보드 log id -> "+logEntity.getUserid());
+<%
+		login_entity logEntity = (login_entity)session.getAttribute("logOK");
+		imgBoard_dao imgDao = new imgBoard_dao();
 %>
 
-<input type="text" style="display:none;" id="hidden_logId" value="<%=logEntity.getUserid()%>">
+<input type="text" style="display: none;" id="hidden_logId"
+	value="<%=logEntity.getUserid()%>">
 <c:if test="${!empty list }">
-<%--  	<c:set var="mylist" value="${list}" /> --%>
- 	
 
+	<div id="appendList">
+		<c:forEach items="${list}" var="imgBoard">
+			<c:set var="listIdx" value="${imgBoard.idx }" />
+			<%
+      int boardIdx = (Integer)pageContext.getAttribute("listIdx") ;
+	 %>
+			<div class="scrolling">
+				<div class="scrolling_profile_bar">
+					<span id="userid"> <c:choose>
+							<c:when test='${logOK.userid eq imgBoard.userid}'>
+								<a href='profileList.do?id=${imgBoard.userid}' class="test">
+									<img name="profileimg"
+									src="/insta/profile_img/${imgBoard.writeuserimg}"
+									class='scrolling_writerImg'> <span
+									class='scrolling_writerId'>${imgBoard.userid}</span>
+								</a>
+							</c:when>
+							<c:when test='${logOK.userid ne imgBoard.userid}'>
+								<a href='idprofile.do?id=${imgBoard.userid}'> <img
+									name="profileimg"
+									src="/insta/profile_img/${imgBoard.writeuserimg}"
+									class='scrolling_writerImg'> <span
+									class='scrolling_writerId'>${imgBoard.userid}</span>
+								</a>
+							</c:when>
+						</c:choose>
+					</span>
+				</div>
 
-   <div id="appendList">
-   <c:forEach items="${list}" var="imgBoard" >
-      <div class="scrolling">
-          <div class="scrolling_profile_bar">
-	          <span id="userid">
-	          <c:choose>
-	          	<c:when test='${logOK.userid eq imgBoard.userid}'>
-          		<a href='profileList.do?id=${imgBoard.userid}' class="test">
-		      		<img name="profileimg" src="/insta/profile_img/${imgBoard.writeuserimg}" class='scrolling_writerImg' >
-			        <span class='scrolling_writerId'>${imgBoard.userid}</span>
-		        </a>
-	          	</c:when>
-	          	<c:when test='${logOK.userid ne imgBoard.userid}'>
-          		<a href='idprofile.do?id=${imgBoard.userid}'>
-		      		<img name="profileimg" src="/insta/profile_img/${imgBoard.writeuserimg}"  class='scrolling_writerImg'>
-			        <span class='scrolling_writerId'>${imgBoard.userid}</span>
-		        </a>
-	          	</c:when>
-		        </c:choose>
-	          </span>
-          </div>
-          
-          <div class='scrolling_board_frame'>
-                <a href='boardView.do?idx=${imgBoard.idx}' class='scrolling_board_a_tag'>
-                <img src='/insta/storage/${imgBoard.imgPath}'  class='scrolling_board_img'></a>
-         </div>
-         <div class="scrolling_icon_bar">
-         			
-         		<%
+				<div class='scrolling_board_frame'>
+					<a href='boardView.do?idx=${imgBoard.idx}'
+						class='scrolling_board_a_tag'> <img
+						src='/insta/storage/${imgBoard.imgPath}'
+						class='scrolling_board_img'></a>
+				</div>
+				<div class="scrolling_icon_bar">
+
+					<%
          		
-         		
-         		%>	
-         			
-           		<i class="far fa-heart fa-2x scrooling_icon_${imgBoard.idx}"onclick="likeCheck(${imgBoard.idx})"></i> 
-               
-               
-               <i class="far fa-comment fa-2x scrooling_icon" onclick="location.href='boardView.do?idx=${imgBoard.idx}'"></i>
-         </div>
-         <div class="scrolling_content">${imgBoard.content }</div>
-         <div class="scrolling_logtime"><span id="logtime">작성일 : ${imgBoard.logtime }</span></div>
-         
-         </div>
+         		rec_entity recEntity= new rec_entity();
+        		recEntity.setIdx(boardIdx);
+        		recEntity.setUserid(logEntity.getUserid());
+        		int n =imgDao.recCheck(recEntity);
+        		
+        		if(n==1){
+        		
+        		%>
+        			<i class="fas fa-heart fa-2x scrooling_icon_${imgBoard.idx}"
+    						onclick="likeCheck(${imgBoard.idx})"></i>
+    						<% 
+        		}
+        		else if(n==0){
+        			%>
+        			<i class="far fa-heart fa-2x scrooling_icon_${imgBoard.idx}"
+    						onclick="likeCheck(${imgBoard.idx})"></i>
+        			<% 
+        		}
+         		%>
+					
+						 <i
+						class="far fa-comment fa-2x scrooling_icon"
+						onclick="location.href='boardView.do?idx=${imgBoard.idx}'"></i>
+				</div>
+				<div class="scrolling_content">${imgBoard.content }</div>
+				<div class="scrolling_logtime">
+					<span id="logtime">작성일 : ${imgBoard.logtime }</span>
+				</div>
 
-      </c:forEach>
-      </div>
-   </c:if>
-   
-   <script>
+			</div>
+
+		</c:forEach>
+	</div>
+</c:if>
+
+<script>
    
   function likeCheck(idxValue){
 	   
@@ -163,8 +190,8 @@ function lastPost(){
    
    
    </script>
-   
-   
-   
+
+
+
 </body>
 </html>
