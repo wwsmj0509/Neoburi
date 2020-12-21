@@ -99,3 +99,5 @@ insert into boardlist(idx,userid,imgpath,content,logtime)
 values(board_seq.nextval,'admin','9.jpg','testupload3',SYSDATE);
 
 drop table userlist;
+drop table boardlist;
+drop sequence board_seq;

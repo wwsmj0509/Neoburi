@@ -6,27 +6,34 @@
 <jsp:include page="../menu.jsp"/>
 
 <script>
-function checkBoardWrite(){
-   if(document.boardWriteForm.content.value=="") {
+function checkBoardModify(){
+   if(document.boardModifyForm.content.value=="") {
       alert("내용을 입력하세요");
   	  boardWriteForm.subject.forcus();
    }else {
-      document.boardWriteForm.submit();
+      document.boardModifyForm.submit();
    }
 }
+function setThumbnail(event) {
+	var reader = new FileReader(); reader.onload = function(event) {
+		var img = document.getElementById("img");
+		img.setAttribute("src", event.target.result);
+		 
+		}; 
+		reader.readAsDataURL(event.target.files[0]); 
+	} 
 </script>
 <c:if test="${!empty logOK}">
 
 <%
 	imgBoard_entity entity = (imgBoard_entity)request.getAttribute("entity");
-	int seq = (Integer)request.getAttribute("seq");
-	int pg = (Integer)request.getAttribute("pg");
 	
 	login_entity log = (login_entity)session.getAttribute("logOK");
+	
 %>
 
 <form name="boardModifyForm" method="post" 
-                   action="/bbs/boardUpdate.do?seq=<%=seq%>&pg=<%=pg%>">
+                   action="userBoardUpdate.do?idx=${entity.idx}" enctype="multipart/form-data">
 <h3>글수정</h3>
 <table border="1" >
 	<tr>
@@ -36,12 +43,15 @@ function checkBoardWrite(){
 	   
 	   <tr>
 			<td><b>이미지</b></td>
-			<td><input type="file" name="imagepath" size="55"></td>
+			<td id="image_container">
+			<img id="img" src="/insta/storage/${entity.imgPath}" width="300" height="300" border="0">
+			<input type="hidden" name="myimgpath" value="${entity.imgPath}">
+			<input type="file" name="imgpath" id="image" accept="image/*" onchange="setThumbnail(event);"/></td>
 	   </tr>
 	   
 	   <tr>
 	      <td>내 용</td>
-	      <td><textarea name="content" cols="47" rows="10"></textarea></td>
+	      <td><textarea name="content" cols="47" rows="10">${entity.content}</textarea></td>
 	   </tr>
 	   
 	<tr>
