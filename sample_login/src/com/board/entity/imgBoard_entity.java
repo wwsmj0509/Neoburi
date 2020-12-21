@@ -7,7 +7,15 @@ public class imgBoard_entity {
 	private String content;
 	private String imgPath;
 	private String logtime;
+	private String writeuserimg;
 	
+	
+	public String getWriteuserimg() {
+		return writeuserimg;
+	}
+	public void setWriteuserimg(String writeuserimg) {
+		this.writeuserimg = writeuserimg;
+	}
 	public String getImgPath() {
 		return imgPath;
 	}

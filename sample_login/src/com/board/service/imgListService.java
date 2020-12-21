@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import com.board.dao.imgBoard_dao;
 import com.board.entity.imgBoard_entity;
+import com.login.dao.login_dao;
+import com.login.entity.login_entity;
 
 import controller.CommandAction;
 
@@ -38,6 +40,7 @@ public class imgListService implements CommandAction {
 		List<imgBoard_entity> list = dao.getBoardList(map);
 		
 		System.out.println("list Size : "+list.size());
+		System.out.println("list Write User Img : "+list.get(0).getWriteuserimg());
 
 		if (list != null) {
 			request.setAttribute("list", list); //첫번째 페이지만 리퀘스트로 띄운다

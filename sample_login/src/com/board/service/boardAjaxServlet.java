@@ -49,6 +49,7 @@ public class boardAjaxServlet extends HttpServlet {
 			String boardContent = list.get(i).getContent();
 			String boardImgPath = list.get(i).getImgPath();
 			String boardDate = list.get(i).getLogtime();
+			String boardWriteuserimg = list.get(i).getWriteuserimg();
 			
 			JSONObject obj = new JSONObject();
 			obj.put("boardIdx", boardIdx);
@@ -56,6 +57,7 @@ public class boardAjaxServlet extends HttpServlet {
 			obj.put("boardContent", boardContent);
 			obj.put("boardImgPath", boardImgPath);
 			obj.put("boardDate", boardDate);
+			obj.put("boardWriteuserimg", boardWriteuserimg);
 			listObj.add(obj);
 			System.out.println(listObj.get(i));
 		}

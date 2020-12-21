@@ -17,14 +17,11 @@ $(function(){
 $(window).scroll(function() {
    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
       ++pg;
-      alert("스크롤 끝부분 라스트 위");
        lastPost();
-       alert("스크롤 끝부분 라스트 아래");
 }
 });
 
 function lastPost(){
-	alert("lastpost");
    $.ajax({
       url : "/insta/boardAjax",      //Servlet으로 비동기 요청
       data : {pg:pg},               // 몇페이지? 
@@ -34,10 +31,14 @@ function lastPost(){
          console.log(listObj);
          for (var i = 0; i < listObj.length; i++) {
          var append_div = "";
-              append_div += "<div class='scrolling'>";
-             append_div += "<div class='scrolling_profile_bar'><span>프로필사진 "+listObj[i].boardUserid+"</span></div>"; 
-             append_div += "<div  class='scrolling_board_frame'><a href='boardView.do?idx="+listObj[i].boardIdx+"' class='scrolling_board_a_tag'>";
-             append_div += "<img src='/insta/storage/"+listObj[i].boardImgPath+"'  class='scrolling_board_img'></a>";
+            append_div += "<div class='scrolling'>";
+            append_div += "<div class='scrolling_profile_bar'><span>";
+           	append_div += "<a href='profileList.do?id="+listObj[i].boardUserid+"' class=''>";
+           	append_div += "<span><img name='profileimg' src='/insta/profile_img/"+listObj[i].boardWriteuserimg+"' width='40px'></span>";
+           	append_div += "<span>"+listObj[i].boardUserid+"</span></a>";
+            append_div += "</span></div>"; 
+            append_div += "<div  class='scrolling_board_frame'><a href='boardView.do?idx="+listObj[i].boardIdx+"' class='scrolling_board_a_tag'>";
+            append_div += "<img src='/insta/storage/"+listObj[i].boardImgPath+"'  class='scrolling_board_img'></a>";
             append_div += "</div>";
             append_div += "<div>";
             append_div += "<i class='far fa-heart fa-2x'></i>";
@@ -59,7 +60,15 @@ function lastPost(){
    <div id="appendList">
    <c:forEach items="${list}" var="imgBoard" >
       <div class="scrolling">
-          <div class="scrolling_profile_bar"><span id="userid">프로필사진 ${imgBoard.userid}</span></div>
+          <div class="scrolling_profile_bar">
+	          <span id="userid">
+          		<a href='profileList.do?id=${imgBoard.userid}' class=''>
+		      		<span><img name="profileimg" src="/insta/profile_img/${imgBoard.writeuserimg}" width="40px"></span>
+			        <span>${imgBoard.userid}</span>
+		        </a>
+	          </span>
+          </div>
+          
           <div class='scrolling_board_frame'>
                 <a href='boardView.do?idx=${imgBoard.idx}' class='scrolling_board_a_tag'>
                 <img src='/insta/storage/${imgBoard.imgPath}'  class='scrolling_board_img'></a>

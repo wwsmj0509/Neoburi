@@ -37,6 +37,7 @@ public class imgInsertService implements CommandAction{
 		
 		imgBoard_entity entity = new imgBoard_entity();
 		entity.setUserid(logentity.getUserid());
+		entity.setWriteuserimg(logentity.getProfileimg()); //보드에 표시할 유저프로필 이미
 		entity.setContent(multi.getParameter("content"));
 		entity.setImgPath(multi.getFilesystemName("imgpath"));
 		
