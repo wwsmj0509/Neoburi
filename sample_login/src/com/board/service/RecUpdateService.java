@@ -17,12 +17,12 @@ public class RecUpdateService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String idx= (String)request.getParameter("idx");
-		String userid=(String)request.getParameter("userid");
+		int idx= Integer.parseInt(request.getParameter("idx"));
+		String userid=request.getParameter("userid");
 		
 		
 		rec_entity recEntity= new rec_entity();
-		recEntity.setIdx(Integer.parseInt(idx));
+		recEntity.setIdx(idx);
 		recEntity.setUserid(userid);
 		
 		imgBoard_dao imgDao = new imgBoard_dao();
@@ -38,6 +38,13 @@ public class RecUpdateService extends HttpServlet {
 			System.out.println("좋아요 등록");
 		}
 		
+		
+		int count =imgDao.recCount(idx);
+
+		
+		
+		response.setContentType("application/x-json; charset=UTF-8");
+		response.getWriter().print(count);
 		
 	}
 

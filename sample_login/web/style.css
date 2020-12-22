@@ -1,9 +1,10 @@
 @charset "UTF-8";
 
-@
-keyframes fadein {from { opacity:0;
+@keyframes fadein {
+	from { 
+	opacity:0;
 	
-}
+	}
 
 to {
 	opacity: 1;
@@ -196,25 +197,19 @@ a {
 	animation: fadein_out 4s cubic-bezier(0.37, 0.82, 0.2, 1);
 }
 
-@
-keyframes fadein_out { 0%{
+@keyframes fadein_out { 
+	
+	0%{
 	opacity: 0;
-}
+	}
 
-50%{
-opacity
-:
-1;
-
+	50%{
+	opacity : 1;
    
-}
-100%{
-opacity
-:
-0;
-
-   
-}
+		}
+	100%{
+	opacity :0;
+		}
 }
 .login_input {
 	font-size: 14px;
@@ -255,37 +250,18 @@ opacity
 	color: #ffffff;
 }
 
-@
-keyframes slideIn { 0% {
+@keyframes slideIn { 
+	0% {
 	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
 	opacity: 0;
 	margin-left: -320px;
-}
+	}
 
-100%
-{
-filter
-:
- 
-progid
-:DXImageTransform
-.Microsoft
-.Alpha
-(enabled=false);
-
-    
-opacity
-:
- 
-1;
-margin-left
-:
- 
-0
-px
-;
-
-  
+	100%
+	{
+	filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);    
+opacity:1;
+margin-left: 0 px;  
 }
 }
 .login_signIn_btn {

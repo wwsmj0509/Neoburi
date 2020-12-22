@@ -83,6 +83,12 @@
 		]]>
 	</insert>
 	
+	<select id="rec_count" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		<![CDATA[
+		SELECT COUNT(*) FROM REC WHERE IDX=#{idx}
+		]]>
+	</select>
+	
 	<delete id="rec_delete" parameterType="recDTO">
 		<![CDATA[
 		DELETE FROM REC WHERE userid = #{userid} AND idx = #{idx}

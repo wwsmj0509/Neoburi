@@ -19,6 +19,7 @@ import com.login.entity.login_entity;
 public class imgBoard_dao {
 	
 	private static SqlSessionFactory factory;
+	private static imgBoard_dao instance = new imgBoard_dao();
 	
 	//Mybatis연결객체 생성--------------------------------------
 	static {
@@ -30,7 +31,10 @@ public class imgBoard_dao {
 			e.printStackTrace();
 		}
 	}
-	
+	public static imgBoard_dao getInstance() {
+		return instance;
+	}
+
 	
 	//write -----------------------------------------------------------------
 	
@@ -164,7 +168,8 @@ public class imgBoard_dao {
 		}
 	}
 	
-	
+	//RecUpdate-----------------------------------------------------------------
+
 	public void recUpdate(rec_entity rec_entity) {
 		SqlSession session = factory.openSession();
 		int n = 0;
@@ -180,6 +185,7 @@ public class imgBoard_dao {
 			session.close();
 		}
 	}
+	//RecDelete-----------------------------------------------------------------
 
 	public void recDelete(rec_entity rec_entity) {
 		SqlSession session = factory.openSession();
@@ -197,6 +203,7 @@ public class imgBoard_dao {
 		}
 
 	}
+	//RecCheck-----------------------------------------------------------------
 
 	public int recCheck(rec_entity rec_entity) {
 		SqlSession session = factory.openSession();
@@ -207,6 +214,24 @@ public class imgBoard_dao {
 		} catch (Exception e) {
 			System.out.println("recCheck : " + e);
 			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return result;
+	}
+	//RecCount-----------------------------------------------------------------
+
+	public int recCount(int idx) {
+		SqlSession session = factory.openSession();
+		int result = 0;
+
+		try {
+			result = session.selectOne("mybatis.BoardMapper.rec_count", idx);
+		} catch (Exception e) {
+			System.out.println("recCheck : " + e);
+			e.printStackTrace();
+		}finally {
+			session.close();
 		}
 		return result;
 	}

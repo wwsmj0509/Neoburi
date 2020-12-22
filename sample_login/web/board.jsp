@@ -8,6 +8,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+
 <jsp:include page="/menu.jsp" />
 <!-- 젇대경로 -->
 
@@ -19,6 +21,7 @@ $(function(){
       $.post("boardList.do",{pg:pg})
    }
 })
+
 $(window).scroll(function() {
    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
       ++pg;
@@ -122,18 +125,18 @@ function lastPost(){
         		if(n==1){
         		
         		%>
-        			<i class="fas fa-heart fa-2x scrooling_icon_${imgBoard.idx}"
+        			<i class="fas fa-heart fa-2x scrooling_icon_${imgBoard.idx} likePlus" 
     						onclick="likeCheck(${imgBoard.idx})"></i>
     						<% 
         		}
         		else if(n==0){
         			%>
-        			<i class="far fa-heart fa-2x scrooling_icon_${imgBoard.idx}"
+        			<i class="far fa-heart fa-2x scrooling_icon_${imgBoard.idx} likePlus"
     						onclick="likeCheck(${imgBoard.idx})"></i>
         			<% 
         		}
          		%>
-					
+					<span class="rec_count_<%=boardIdx%>"><%=imgDao.recCount(boardIdx) %></span>
 						 <i
 						class="far fa-comment fa-2x scrooling_icon"
 						onclick="location.href='boardView.do?idx=${imgBoard.idx}'"></i>
@@ -150,7 +153,8 @@ function lastPost(){
 </c:if>
 
 <script>
-   
+
+
   function likeCheck(idxValue){
 	   
 	  var className='.scrooling_icon_';
@@ -165,30 +169,41 @@ function lastPost(){
            url : "/insta/RecUpdateService_url",    
            data : {userid:userid , idx:idx},               
            type : "get",
-           dataType: "json",
-           success : function(){ 
-               alert("no,,");
-           },
-           error : function(){ 
-        	   
-        	   console.log(">>" + className)
-        	   
-        	   if($(className).hasClass("fas") === true) {
 
-            	   $(className).attr('class','far fa-heart fa-2x scrooling_icon_'+idxValue);      
-					console.log("좋아요 취소")
-        		}
-        	   else if($(className).hasClass("far") === true){
-            	   $(className).attr('class','fas fa-heart fa-2x scrooling_icon_'+idxValue);      	   
-					console.log("좋아요 등록")
-        	   }
+           success : function(count){ 
+             	 console.log(':::'+count)
+          	   console.log(">>" + className)
+          	   
+          	   var tempStr=".rec_count_";
+             	 
+             	 tempStr=tempStr+idx;
+             	 
+          	  $(tempStr).html(count);
+          	  console.log(tempStr)
+          	   
+          	   if($(className).hasClass("fas") === true) {
+
+              	   $(className).attr('class','far fa-heart fa-2x scrooling_icon_'+idxValue);      
+  					console.log("좋아요 취소")
+          		}
+          	   else if($(className).hasClass("far") === true){
+              	   $(className).attr('class','fas fa-heart fa-2x scrooling_icon_'+idxValue);      	   
+  					console.log("좋아요 등록")
+          	   }
+             	 
+             	 
+           },
+           error : function(count){ 
+        	   
+        	   alert("no,,");
+             	
 
         	   
            }
        });
    };
    
-   
+  
    </script>
 
 
