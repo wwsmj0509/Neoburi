@@ -901,6 +901,59 @@ px
 }
 
 
+.idprofile_form{
+	
+		width: 100%;
+	
+}
+
+.idprofile_img_div{
+	padding-bottom:20px;
+		width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.idprofile_img{
+		width: 250px;
+	height: 250px;
+	border-radius: 100%;
+
+}
+
+.idprofile_postList{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.idprofile_postList_frame{
+	
+	border-top: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+	padding-top: 50px;
+	width: 950px;
+}
+
+.idprofile_post_div{
+	display: inline-block;
+	transition: opacity 0.4s;
+}
+.idprofile_post_div:hover {
+	opacity: 0.6;
+}
+
+.idprofile_post_img{
+		cursor: pointer;
+	margin: 3px;
+	width: 300px;
+	height: 300px;
+}
+
+
+
+
 
 
 
