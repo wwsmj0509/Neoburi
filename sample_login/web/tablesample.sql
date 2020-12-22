@@ -129,7 +129,7 @@ idx number(6)
 		SELECT COUNT(*) FROM REC WHERE userid='aa' AND idx=9
 
 
-select * from rec
+select * from rec;
 
 
 drop table rec
