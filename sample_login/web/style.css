@@ -1,4 +1,4 @@
-@charset "UTF-8";
+ @charset "UTF-8";
 
 @keyframes fadein {
 	from { 
@@ -784,12 +784,36 @@ margin-left: 0 px;
 	font-family: 'Nanum Gothic Coding', monospace;
 }
 
+.view_post_bottom_right_bar{
+	position:relative;
+	left:140px;
+	display:flex;
+	
+}
+.view_post_bottom_modify_btn{
+		line-height: 50px;
+		
+	
+}
+
+.view_post_bottom_modify_btn:hover{
+	opacity:0.6;
+}
+.view_post_bottom_delete_btn{
+		line-height: 50px;
+		margin-left:10px;
+		margin-right:10px;
+	
+}
+.view_post_bottom_delete_btn:hover{
+	opacity:0.6;
+}
+
 .view_post_bottom_logtime {
 	font-family: 'Nanum Gothic Coding', monospace;
 	font-size: 12px;
 	line-height: 50px;
 	position: relative;
-	left: 225px;
 }
 
 .view_post_bottom_content {
@@ -836,6 +860,9 @@ margin-left: 0 px;
 	font-weight: bold;
 	rgba: (var(--f75, 38, 38, 38), 1);
 }
+
+
+
 
 .view_post_bottom_replyList_form .content {
 	

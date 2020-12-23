@@ -20,16 +20,19 @@
 						<img name="profileimg"
 							src="/insta/profile_img/${boardView.writeuserimg}">
 					<div class="view_post_bottom_userid">${boardView.userid }</div>
+					<div class="view_post_bottom_right_bar">
 					<c:if test="${logOK.userid == boardView.userid }">
 						<!--작성자 확인 -->
 						<div>
-							<a href="boardModify.do?idx=${boardView.idx}">수정</a>
+							<a href="boardModify.do?idx=${boardView.idx}" class="view_post_bottom_modify_btn">수정</a>
 						</div>
 						<div>
-							<a href="boardDelete.do?idx=${boardView.idx}">삭제</a>
+							<a href="boardDelete.do?idx=${boardView.idx}" class="view_post_bottom_delete_btn">삭제</a>
 						</div>
 					</c:if>
 					<div class="view_post_bottom_logtime">${boardView.logtime}</div>
+					</div>
+					
 				</div>
 
 				<div class="view_post_bottom_content">${boardView.content }</div>
